@@ -1,13 +1,12 @@
 /* ==========================================================
-   BOOKING.JS — Full 4-step booking engine
-   Driver → Vehicle → Route calc → Payment redirect
+   BOOKING.JS v2 — 4-step engine with auto-reveal & smooth UX
    ========================================================== */
 (() => {
   'use strict';
 
-  const WORKER_URL   = 'https://y.freddy-b97.workers.dev';
-  const RATE_PER_MI  = 5;
-  const MIN_FARE     = 75;
+  const WORKER_URL  = 'https://y.freddy-b97.workers.dev';
+  const RATE_PER_MI = 5;
+  const MIN_FARE    = 75;
 
   /* ── State ── */
   let driverId = null, driverName = null;
@@ -15,29 +14,36 @@
   let miles = null, total = null;
 
   /* ── Elements ── */
-  const driverCards  = document.querySelectorAll('.driver-card');
-  const vehicleGrid  = document.getElementById('vehicleGrid');
-  const vehicleCards = document.querySelectorAll('.vehicle-card');
-  const driverHint   = document.getElementById('driverHint');
-  const vehicleHint  = document.getElementById('vehicleHint');
-  const pickupEl     = document.getElementById('pickup');
-  const dropoffEl    = document.getElementById('dropoff');
-  const dateEl       = document.getElementById('tripDate');
-  const timeEl       = document.getElementById('tripTime');
+  const driverGrid     = document.getElementById('driverGrid');
+  const driverCards     = document.querySelectorAll('.driver-card');
+  const vehicleSection  = document.getElementById('step-vehicle');
+  const vehicleGrid     = document.getElementById('vehicleGrid');
+  const vehicleCards    = document.querySelectorAll('.vehicle-card');
+  const driverHint      = document.getElementById('driverHint');
+  const vehicleHint     = document.getElementById('vehicleHint');
+  const pickupEl        = document.getElementById('pickup');
+  const dropoffEl       = document.getElementById('dropoff');
+  const dateEl          = document.getElementById('tripDate');
+  const timeEl          = document.getElementById('tripTime');
 
-  const driverText   = document.getElementById('selectedDriverText');
-  const vehicleText  = document.getElementById('selectedVehicleText');
-  const milesText    = document.getElementById('milesText');
-  const totalText    = document.getElementById('totalText');
-  const calcMsg      = document.getElementById('calcMsg');
+  const driverText  = document.getElementById('selectedDriverText');
+  const vehicleText = document.getElementById('selectedVehicleText');
+  const milesText   = document.getElementById('milesText');
+  const totalText   = document.getElementById('totalText');
+  const calcMsg     = document.getElementById('calcMsg');
 
-  const mapFrame     = document.getElementById('mapFrame');
-  const openPickup   = document.getElementById('openPickup');
-  const openDropoff  = document.getElementById('openDropoff');
-  const openRoute    = document.getElementById('openRoute');
-  const continueBtn  = document.getElementById('continueBookingBtn');
+  const mapFrame    = document.getElementById('mapFrame');
+  const openPickup  = document.getElementById('openPickup');
+  const openDropoff = document.getElementById('openDropoff');
+  const openRoute   = document.getElementById('openRoute');
+  const continueBtn = document.getElementById('continueBookingBtn');
 
   const progressSteps = document.querySelectorAll('.progress-step');
+
+  /* ── Mobile: make driver grid swipeable ── */
+  if (window.innerWidth <= 768 && driverGrid) {
+    driverGrid.classList.add('driver-grid-mobile');
+  }
 
   /* ── Helpers ── */
   function msg(t) { if (calcMsg) calcMsg.textContent = t || ''; }
@@ -47,14 +53,6 @@
     if (vehicleText) vehicleText.textContent = vehicleName || 'None';
     if (milesText)   milesText.textContent   = Number.isFinite(miles) ? `${miles.toFixed(1)} mi` : '—';
     if (totalText)   totalText.textContent   = Number.isFinite(total) ? `$${total.toFixed(2)}` : '$ —';
-  }
-
-  function lockVehicles(locked) {
-    if (!vehicleGrid) return;
-    vehicleGrid.style.opacity       = locked ? '.45' : '1';
-    vehicleGrid.style.pointerEvents = locked ? 'none' : 'auto';
-    vehicleGrid.style.filter        = locked ? 'grayscale(30%)' : 'none';
-    if (vehicleHint) vehicleHint.textContent = locked ? 'Locked: Select a driver first' : 'Required: Select 1 vehicle';
   }
 
   function setProgress(step) {
@@ -68,7 +66,7 @@
   function updateMapLinks() {
     const p = pickupEl?.value?.trim();
     const d = dropoffEl?.value?.trim();
-    if (openPickup)  openPickup.href  = p ? `https://www.google.com/maps?q=${encodeURIComponent(p)}`  : '#';
+    if (openPickup)  openPickup.href  = p ? `https://www.google.com/maps?q=${encodeURIComponent(p)}` : '#';
     if (openDropoff) openDropoff.href = d ? `https://www.google.com/maps?q=${encodeURIComponent(d)}` : '#';
     if (openRoute)   openRoute.href   = (p && d) ? `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(p)}&destination=${encodeURIComponent(d)}&travelmode=driving` : '#';
     if (mapFrame && p && d) mapFrame.src = `https://www.google.com/maps?q=${encodeURIComponent(p)}&output=embed`;
@@ -82,11 +80,21 @@
 
   function syncContinue() {
     if (continueBtn) continueBtn.disabled = !canContinue();
-    // progress indicator
     if (driverId && vehicleId && Number.isFinite(miles)) setProgress(4);
     else if (driverId && vehicleId) setProgress(3);
     else if (driverId) setProgress(2);
     else setProgress(1);
+  }
+
+  /* ── Auto-reveal Vehicle Section ── */
+  function unlockVehicles() {
+    if (!vehicleSection) return;
+    vehicleSection.classList.add('is-unlocked');
+    if (vehicleHint) vehicleHint.textContent = 'Select 1 vehicle';
+    // smooth scroll to vehicle section
+    setTimeout(() => {
+      vehicleSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 150);
   }
 
   /* ── Distance API ── */
@@ -100,7 +108,8 @@
       const data = await res.json();
       if (!res.ok || !data.miles) throw new Error(data.error || 'Distance lookup failed');
       const m = Number(data.miles);
-      let t = m * RATE_PER_MI; if (t < MIN_FARE) t = MIN_FARE;
+      let t = m * RATE_PER_MI;
+      if (t < MIN_FARE) t = MIN_FARE;
       t = Math.round(t * 100) / 100;
       miles = m; total = t;
       updateEstimate();
@@ -121,11 +130,12 @@
       driverId   = card.dataset.driverId;
       driverName = card.dataset.driverName;
       if (driverHint) driverHint.textContent = '✓ Selected';
-      lockVehicles(false);
-      updateEstimate(); syncContinue();
+      unlockVehicles();
+      updateEstimate();
+      syncContinue();
     };
     card.addEventListener('click', select);
-    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') select(); });
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(); } });
   });
 
   /* ── Vehicle Selection ── */
@@ -136,10 +146,16 @@
       vehicleId   = card.dataset.vehicleId;
       vehicleName = card.dataset.vehicleName;
       if (vehicleHint) vehicleHint.textContent = '✓ Selected';
-      updateEstimate(); syncContinue();
+      updateEstimate();
+      syncContinue();
+      // scroll to route
+      const routeSection = document.getElementById('step-route');
+      if (routeSection) {
+        setTimeout(() => routeSection.scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
+      }
     };
     card.addEventListener('click', select);
-    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') select(); });
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(); } });
   });
 
   /* ── Input Listeners ── */
@@ -171,7 +187,6 @@
   });
 
   /* ── Init ── */
-  lockVehicles(true);
   updateEstimate();
   syncContinue();
   updateMapLinks();

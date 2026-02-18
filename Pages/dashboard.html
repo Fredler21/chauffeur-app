@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Dashboard | [Your Brand Name]</title>
+  <title>Dashboard | Chauffeur App</title>
   <meta name="description" content="Your premium chauffeur dashboard — stats, recent trips, and quick booking.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="container">
-      <a class="brand" href="../index.html"><span class="logo-dot"></span><span>[Your Brand Name]</span></a>
+      <a class="brand" href="../index.html"><span class="logo-dot"></span><span>Chauffeur App</span></a>
       <div class="nav-links" id="navLinks">
         <a href="../index.html">Home</a>
         <a href="dashboard.html" class="active">Dashboard</a>
@@ -32,19 +32,23 @@
   </nav>
 
   <main>
-    <section class="section" style="padding-top:40px">
+    <!-- DASHBOARD HERO — single background image, proper cover + overlay -->
+    <section class="dash-hero">
+      <div class="dash-hero-bg" style="background-image:url('../assets/images/hero/car1.jpg')"></div>
+      <div class="dash-hero-overlay"></div>
       <div class="container">
-
-        <!-- WELCOME -->
-        <div class="dash-welcome">
-          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
-            <div>
-              <h1 style="font-size:28px;margin-bottom:6px">Welcome back, Rider</h1>
-              <p class="lead">Here's your booking overview.</p>
-            </div>
-            <a class="btn btn-primary" href="book.html">Quick Book</a>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px">
+          <div>
+            <h1>Welcome back, Rider</h1>
+            <p class="lead">Here's your booking overview.</p>
           </div>
+          <a class="btn btn-primary" href="book.html">Quick Book</a>
         </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:28px">
+      <div class="container">
 
         <!-- QUICK STATS -->
         <div class="stats-grid">
@@ -66,42 +70,25 @@
           </div>
         </div>
 
-        <!-- HOW IT WORKS — Compact Bar -->
-        <h2 style="margin-bottom:16px;font-size:20px">How It Works</h2>
-        <div class="how-bar">
-          <a class="how-step-card" href="book.html#step-driver">
-            <div class="step-icon">👤</div>
-            <div>
-              <h4>1. Choose Driver</h4>
-              <p>Select a professional chauffeur</p>
-            </div>
+        <!-- HOW IT WORKS — compact horizontal strip -->
+        <div class="how-strip">
+          <a class="how-strip-step" href="book.html#step-driver">
+            <span class="step-dot">1</span> Choose Driver
           </a>
-          <a class="how-step-card" href="book.html#step-vehicle">
-            <div class="step-icon">🚘</div>
-            <div>
-              <h4>2. Choose Vehicle</h4>
-              <p>Pick the best ride for your trip</p>
-            </div>
+          <a class="how-strip-step" href="book.html#step-vehicle">
+            <span class="step-dot">2</span> Choose Vehicle
           </a>
-          <a class="how-step-card" href="book.html#step-route">
-            <div class="step-icon">🗺️</div>
-            <div>
-              <h4>3. Enter Route</h4>
-              <p>See distance &amp; cost estimate</p>
-            </div>
+          <a class="how-strip-step" href="book.html#step-route">
+            <span class="step-dot">3</span> Enter Route
           </a>
-          <a class="how-step-card" href="book.html#step-confirm">
-            <div class="step-icon">✅</div>
-            <div>
-              <h4>4. Confirm &amp; Pay</h4>
-              <p>Secure Stripe checkout</p>
-            </div>
+          <a class="how-strip-step" href="book.html#step-confirm">
+            <span class="step-dot">4</span> Confirm &amp; Pay
           </a>
         </div>
 
         <!-- RECENT TRIPS -->
         <div class="card" style="overflow-x:auto">
-          <h3 style="margin-bottom:16px">Recent Trips</h3>
+          <h3 style="margin-bottom:14px">Recent Trips</h3>
           <table class="trips-table">
             <thead>
               <tr>
@@ -154,11 +141,10 @@
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-bottom">
-        <span>&copy; <span id="footerYear">2026</span> [Your Brand Name]. All rights reserved.</span>
+        <span>&copy; <span id="footerYear">2026</span> Chauffeur App. All rights reserved.</span>
         <span>Licensed &amp; Insured</span>
       </div>
     </div>

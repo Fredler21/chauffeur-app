@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>[Your Brand Name] | Premium Chauffeur</title>
+  <title>Chauffeur App | Premium Private Chauffeur</title>
   <meta name="description" content="Premium private chauffeur service. Reliable. Discreet. Professional.">
 
-  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"LocalBusiness",
-    "name":"[Your Brand Name]",
+    "name":"Chauffeur App",
     "description":"Premium private chauffeur service",
     "serviceType":"Chauffeur Service",
     "areaServed":"United States"
@@ -26,10 +25,7 @@
 </head>
 <body>
   <!-- PAGE LOADER -->
-  <div class="page-loader" id="pageLoader">
-    <div class="loader-ring"></div>
-  </div>
-
+  <div class="page-loader" id="pageLoader"><div class="loader-ring"></div></div>
   <div class="bg-glow" aria-hidden="true"></div>
 
   <!-- ═══ NAVBAR ═══ -->
@@ -37,20 +33,18 @@
     <div class="container">
       <a class="brand" href="index.html" aria-label="Home">
         <span class="logo-dot" aria-hidden="true"></span>
-        <span>[Your Brand Name]</span>
+        <span>Chauffeur App</span>
       </a>
-
       <div class="nav-links" id="navLinks">
         <a href="index.html" class="active">Home</a>
         <a href="Pages/dashboard.html">Dashboard</a>
         <a href="Pages/book.html">Book a Ride</a>
-        <a href="#categories">Services</a>
-        <a href="#drivers">Drivers</a>
+        <a href="#services">Services</a>
+        <a href="#fleet">Fleet</a>
       </div>
-
       <div class="nav-right">
         <button class="dm-toggle" id="dmToggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
-        <a class="btn btn-primary btn-sm" href="Pages/book.html">Start Booking</a>
+        <a class="btn btn-primary btn-sm" href="Pages/book.html">Book Now</a>
         <button class="nav-burger" id="navBurger" aria-label="Toggle menu">
           <span></span><span></span><span></span>
         </button>
@@ -59,50 +53,45 @@
   </nav>
 
   <main>
-    <!-- ═══ HERO ═══ -->
+    <!-- ═══ HERO — single background image only ═══ -->
     <section class="hero" id="top">
       <div class="hero-bg">
         <img src="assets/images/hero/car1.jpg" alt="Luxury chauffeur vehicle at night" id="heroBgImg">
       </div>
       <div class="hero-overlay"></div>
-
       <div class="container">
         <div class="hero-grid">
           <div class="hero-content">
-            <p class="pill">Licensed &amp; Insured · On-time guarantee · Professional chauffeurs</p>
+            <p class="pill">Licensed &amp; Insured · On-time guarantee</p>
             <h1>Private Chauffeur.<br>Elevated Experience.</h1>
             <p class="subhead">
               Reliable. Discreet. Premium.<br>
               Airport transfers, business rides, events, and hourly bookings.
-              Premium service designed for comfort and privacy.
             </p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="Pages/book.html">Start Booking</a>
               <a class="btn btn-ghost" href="#fleet">View Fleet</a>
-              <a class="btn btn-outline" href="#drivers">Meet Drivers</a>
             </div>
           </div>
 
-          <!-- CAROUSEL -->
+          <!-- CAROUSEL — 3 slides, no duplicate car images elsewhere -->
           <div class="carousel" aria-label="Luxury car gallery">
             <div class="carousel-frame">
               <div class="carousel-track" data-carousel-track>
                 <figure class="slide" data-slide="0">
-                  <img src="assets/images/hero/car1.jpg" alt="Luxury chauffeur vehicle exterior">
+                  <img src="assets/images/hero/car1.jpg" alt="Luxury sedan exterior">
                 </figure>
                 <figure class="slide" data-slide="1">
-                  <img src="assets/images/hero/car2.jpg" alt="Premium black car service">
+                  <img src="assets/images/hero/car2.jpg" alt="Premium black car">
                 </figure>
                 <figure class="slide" data-slide="2">
-                  <img src="assets/images/hero/car3.jpg" alt="Executive chauffeured vehicle">
+                  <img src="assets/images/hero/car3.jpg" alt="Executive vehicle">
                 </figure>
               </div>
-
               <button class="carousel-btn prev" type="button" aria-label="Previous" data-carousel-prev>&#8249;</button>
               <button class="carousel-btn next" type="button" aria-label="Next" data-carousel-next>&#8250;</button>
               <div class="carousel-overlay" aria-hidden="true"></div>
             </div>
-
             <div class="carousel-dots" role="tablist" aria-label="Choose image">
               <button class="dot is-active" type="button" aria-label="Slide 1" data-dot="0"></button>
               <button class="dot" type="button" aria-label="Slide 2" data-dot="1"></button>
@@ -113,47 +102,41 @@
       </div>
     </section>
 
-    <!-- ═══ CATEGORIES ═══ -->
-    <section class="section reveal" id="categories">
+    <!-- ═══ SERVICES — text-only cards, no images ═══ -->
+    <section class="section reveal" id="services">
       <div class="container">
         <div class="section-head">
           <h2>Our Services</h2>
           <p class="lead">Premium transportation for every occasion.</p>
         </div>
-
         <div class="categories-grid">
-          <a class="category-card" href="Pages/book.html">
-            <img src="assets/images/hero/car1.jpg" alt="Airport Transfers">
-            <div class="category-overlay">
-              <h3>Airport Transfers</h3>
+          <a class="category-card" href="Pages/book.html" style="background:linear-gradient(135deg,rgba(177,18,38,.20),var(--panel))">
+            <div class="category-overlay" style="background:none">
+              <h3>✈ Airport Transfers</h3>
               <p>Seamless pickup &amp; drop-off</p>
             </div>
           </a>
-          <a class="category-card" href="Pages/book.html">
-            <img src="assets/images/hero/car2.jpg" alt="Corporate Travel">
-            <div class="category-overlay">
-              <h3>Corporate Travel</h3>
+          <a class="category-card" href="Pages/book.html" style="background:linear-gradient(135deg,rgba(177,18,38,.12),var(--panel))">
+            <div class="category-overlay" style="background:none">
+              <h3>💼 Corporate Travel</h3>
               <p>Executive-level transport</p>
             </div>
           </a>
-          <a class="category-card" href="Pages/book.html">
-            <img src="assets/images/hero/car3.jpg" alt="Events & Weddings">
-            <div class="category-overlay">
-              <h3>Events &amp; Weddings</h3>
+          <a class="category-card" href="Pages/book.html" style="background:linear-gradient(135deg,rgba(177,18,38,.08),var(--panel))">
+            <div class="category-overlay" style="background:none">
+              <h3>🎉 Events &amp; Weddings</h3>
               <p>Arrive in style</p>
             </div>
           </a>
-          <a class="category-card" href="Pages/book.html">
-            <img src="assets/images/vehicles/sedan.jpg" alt="Hourly Chauffeur">
-            <div class="category-overlay">
-              <h3>Hourly Chauffeur</h3>
+          <a class="category-card" href="Pages/book.html" style="background:linear-gradient(135deg,rgba(100,100,120,.12),var(--panel))">
+            <div class="category-overlay" style="background:none">
+              <h3>⏱ Hourly Chauffeur</h3>
               <p>By-the-hour flexibility</p>
             </div>
           </a>
-          <a class="category-card" href="Pages/book.html">
-            <img src="assets/images/vehicles/suv.jpg" alt="VIP Service">
-            <div class="category-overlay">
-              <h3>VIP Service</h3>
+          <a class="category-card" href="Pages/book.html" style="background:linear-gradient(135deg,rgba(177,18,38,.16),var(--panel))">
+            <div class="category-overlay" style="background:none">
+              <h3>⭐ VIP Service</h3>
               <p>Exclusive premium experience</p>
             </div>
           </a>
@@ -161,72 +144,38 @@
       </div>
     </section>
 
-    <!-- ═══ FLEET PREVIEW ═══ -->
+    <!-- ═══ FLEET — one clean section, proper cards ═══ -->
     <section class="section reveal" id="fleet">
       <div class="container">
         <div class="section-head">
           <h2>Our Fleet</h2>
-          <p class="lead">Hand-picked premium vehicles for every trip.</p>
+          <p class="lead">Hand-picked premium vehicles for your trip.</p>
         </div>
-
-        <div class="grid-3">
-          <article class="card card-lift card-glow">
-            <img src="assets/images/vehicles/sedan.jpg" alt="Executive Sedan" style="width:100%;height:200px;object-fit:cover;border-radius:14px;margin-bottom:14px">
-            <h3>Executive Sedan</h3>
-            <p class="vehicle-meta">Up to 3 passengers · 2 luggage</p>
-            <p class="vehicle-desc">Ideal for airport transfers and business travel.</p>
+        <div class="fleet-grid">
+          <article class="fleet-card">
+            <img src="assets/images/vehicles/sedan.jpg" alt="Executive Sedan">
+            <div class="fleet-card-body">
+              <h3>Executive Sedan</h3>
+              <p class="vehicle-meta">Up to 3 passengers · 2 luggage</p>
+              <p class="vehicle-desc">Ideal for airport transfers and business travel.</p>
+            </div>
           </article>
-          <article class="card card-lift card-glow">
-            <img src="assets/images/vehicles/suv.jpg" alt="Luxury SUV" style="width:100%;height:200px;object-fit:cover;border-radius:14px;margin-bottom:14px">
-            <h3>Luxury SUV</h3>
-            <p class="vehicle-meta">Up to 6 passengers · 5 luggage</p>
-            <p class="vehicle-desc">Extra comfort and space for premium rides.</p>
+          <article class="fleet-card">
+            <img src="assets/images/vehicles/suv.jpg" alt="Luxury SUV">
+            <div class="fleet-card-body">
+              <h3>Luxury SUV</h3>
+              <p class="vehicle-meta">Up to 6 passengers · 5 luggage</p>
+              <p class="vehicle-desc">Extra comfort and space for premium rides.</p>
+            </div>
           </article>
-          <article class="card card-lift card-glow">
-            <img src="assets/images/vehicles/van.jpg" alt="Premium Van" style="width:100%;height:200px;object-fit:cover;border-radius:14px;margin-bottom:14px">
-            <h3>Premium Van</h3>
-            <p class="vehicle-meta">Up to 10 passengers · 10 luggage</p>
-            <p class="vehicle-desc">Best for group transportation and events.</p>
+          <article class="fleet-card">
+            <img src="assets/images/vehicles/van.jpg" alt="Premium Van">
+            <div class="fleet-card-body">
+              <h3>Premium Van</h3>
+              <p class="vehicle-meta">Up to 10 passengers · 10 luggage</p>
+              <p class="vehicle-desc">Best for group transportation and events.</p>
+            </div>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ DRIVER ROLLER ═══ -->
-    <section class="roller-section reveal" id="drivers">
-      <div class="container">
-        <div class="section-head">
-          <h2>Meet Our Drivers</h2>
-          <p class="lead">Professional chauffeurs you can trust.</p>
-        </div>
-      </div>
-
-      <div class="roller-track-wrap">
-        <div class="roller-track" id="rollerTrack">
-          <!-- JS will duplicate these for infinite scroll -->
-          <div class="driver-roller-card" data-driver="fredler">
-            <img src="assets/images/drivers/driver1.jpg" alt="Fredler Gracia Pierre-Louis">
-            <h4>Fredler Gracia Pierre-Louis</h4>
-            <p class="driver-exp">3 yrs Uber · 2 yrs Lyft · 3 languages</p>
-            <div class="driver-rating">★ 4.9 <span style="color:var(--muted);font-weight:400">(120)</span></div>
-            <span class="avail-badge">Available</span>
-          </div>
-
-          <div class="driver-roller-card" data-driver="sebastien">
-            <img src="assets/images/drivers/driver2.jpg" alt="Sebastien Jouthe">
-            <h4>Sebastien Jouthe</h4>
-            <p class="driver-exp">2 yrs Uber · 1 yr Lyft · HVAC certified</p>
-            <div class="driver-rating">★ 4.8 <span style="color:var(--muted);font-weight:400">(86)</span></div>
-            <span class="avail-badge">Available</span>
-          </div>
-
-          <div class="driver-roller-card" data-driver="nason">
-            <img src="assets/images/drivers/driver3.jpg" alt="Nason Valcin">
-            <h4>Nason Valcin</h4>
-            <p class="driver-exp">4 yrs Uber · 2 yrs Lyft</p>
-            <div class="driver-rating">★ 4.9 <span style="color:var(--muted);font-weight:400">(174)</span></div>
-            <span class="avail-badge">Available</span>
-          </div>
         </div>
       </div>
     </section>
@@ -243,6 +192,41 @@
         </div>
       </div>
     </section>
+
+    <!-- ═══ DRIVER ROLLER — bottom only, small cards, 3 drivers once ═══ -->
+    <section class="roller-section reveal" id="drivers">
+      <div class="container">
+        <div class="section-head">
+          <h2>Our Drivers</h2>
+          <p class="lead">Professional chauffeurs you can trust.</p>
+        </div>
+      </div>
+      <div class="roller-track-wrap">
+        <div class="roller-track" id="rollerTrack">
+          <div class="driver-roller-card" data-driver="fredler">
+            <img src="assets/images/drivers/driver1.jpg" alt="Fredler Gracia Pierre-Louis">
+            <h4>Fredler G.</h4>
+            <p class="driver-exp">3 yrs Uber · 2 yrs Lyft</p>
+            <div class="driver-rating">★ 4.9</div>
+            <span class="avail-badge">Available</span>
+          </div>
+          <div class="driver-roller-card" data-driver="sebastien">
+            <img src="assets/images/drivers/driver2.jpg" alt="Sebastien Jouthe">
+            <h4>Sebastien J.</h4>
+            <p class="driver-exp">2 yrs Uber · 1 yr Lyft</p>
+            <div class="driver-rating">★ 4.8</div>
+            <span class="avail-badge">Available</span>
+          </div>
+          <div class="driver-roller-card" data-driver="nason">
+            <img src="assets/images/drivers/driver3.jpg" alt="Nason Valcin">
+            <h4>Nason V.</h4>
+            <p class="driver-exp">4 yrs Uber · 2 yrs Lyft</p>
+            <div class="driver-rating">★ 4.9</div>
+            <span class="avail-badge">Available</span>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- ═══ FOOTER ═══ -->
@@ -252,9 +236,9 @@
         <div>
           <div class="footer-brand">
             <span class="logo-dot" aria-hidden="true"></span>
-            [Your Brand Name]
+            Chauffeur App
           </div>
-          <p>Premium private chauffeur service. Reliable, discreet, and always on time.</p>
+          <p>Premium private chauffeur service. Reliable, discreet, always on time.</p>
         </div>
         <div>
           <h4>Navigation</h4>
@@ -270,28 +254,25 @@
             <li><a href="Pages/book.html">Airport Transfers</a></li>
             <li><a href="Pages/book.html">Corporate Travel</a></li>
             <li><a href="Pages/book.html">Events &amp; Weddings</a></li>
-            <li><a href="Pages/book.html">VIP Service</a></li>
           </ul>
         </div>
         <div>
           <h4>Contact</h4>
           <ul>
-            <li><a href="mailto:info@yourbrand.com">info@yourbrand.com</a></li>
+            <li><a href="mailto:info@chauffeurapp.com">info@chauffeurapp.com</a></li>
             <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; <span id="footerYear">2026</span> [Your Brand Name]. All rights reserved.</span>
+        <span>&copy; <span id="footerYear">2026</span> Chauffeur App. All rights reserved.</span>
         <span>Licensed &amp; Insured</span>
       </div>
     </div>
   </footer>
 
-  <!-- TOAST CONTAINER -->
   <div class="toast-container" id="toastContainer"></div>
 
-  <!-- JS -->
   <script src="assets/js/app.js"></script>
   <script src="assets/js/carousel.js"></script>
   <script src="assets/js/roller.js"></script>

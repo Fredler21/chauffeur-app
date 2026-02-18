@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Book a Ride | [Your Brand Name]</title>
+  <title>Book a Ride | Chauffeur App</title>
   <meta name="description" content="Book a premium private chauffeur ride with route preview and live pricing.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="container">
-      <a class="brand" href="../index.html"><span class="logo-dot"></span><span>[Your Brand Name]</span></a>
+      <a class="brand" href="../index.html"><span class="logo-dot"></span><span>Chauffeur App</span></a>
       <div class="nav-links" id="navLinks">
         <a href="../index.html">Home</a>
         <a href="dashboard.html">Dashboard</a>
@@ -35,13 +35,13 @@
     <!-- TITLE -->
     <section class="section" style="padding-bottom:0">
       <div class="container">
-        <h1 style="font-size:clamp(26px,3vw,38px)">Book Your Chauffeur</h1>
-        <p class="lead" style="margin-top:8px">Driver → Vehicle → Route → Payment</p>
+        <h1>Book Your Chauffeur</h1>
+        <p class="lead" style="margin-top:6px">Driver → Vehicle → Route → Payment</p>
       </div>
     </section>
 
-    <!-- PROGRESS BAR -->
-    <section class="section" style="padding:28px 0">
+    <!-- COMPACT PROGRESS BAR -->
+    <section class="section" style="padding:20px 0">
       <div class="container">
         <div class="progress-steps" id="progressSteps">
           <div class="progress-step is-active" data-step="1"><span class="step-num">1</span> Driver</div>
@@ -52,27 +52,25 @@
       </div>
     </section>
 
-    <!-- STEP 1: DRIVERS -->
+    <!-- STEP 1: DRIVERS — single appearance, mobile swipeable -->
     <section class="section" id="step-driver" style="padding-top:0">
       <div class="container">
-        <div class="section-head" style="text-align:left;margin-bottom:20px">
-          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
-            <div>
-              <h2>Choose Your Driver</h2>
-              <p class="lead">Tap a driver to select. Vehicle selection unlocks after.</p>
-            </div>
-            <div class="hint" id="driverHint">Required: Select 1 driver</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px">
+          <div>
+            <h2>Step 1 — Choose Your Driver</h2>
+            <p class="lead">Tap a driver to begin.</p>
           </div>
+          <div class="hint" id="driverHint">Select 1 driver</div>
         </div>
 
-        <div class="grid-3">
+        <div class="grid-3" id="driverGrid">
           <article class="card driver-card" data-driver-id="fredler" data-driver-name="Fredler Gracia Pierre-Louis" tabindex="0" role="button">
             <div class="card-badge available">Available</div>
             <img src="../assets/images/drivers/driver1.jpg" alt="Fredler Gracia Pierre-Louis">
             <h3>Fredler Gracia Pierre-Louis</h3>
             <p class="driver-meta">3 yrs Uber · 2 yrs Lyft · 3 languages</p>
             <p class="driver-desc">Cybersecurity student with strong safety awareness and premium service mindset.</p>
-            <div class="card-actions"><button class="btn btn-primary btn-sm" type="button">Select Driver</button></div>
+            <div class="card-actions"><button class="btn btn-primary btn-sm" type="button">Select</button></div>
           </article>
 
           <article class="card driver-card" data-driver-id="sebastien" data-driver-name="Sebastien Jouthe" tabindex="0" role="button">
@@ -80,8 +78,8 @@
             <img src="../assets/images/drivers/driver2.jpg" alt="Sebastien Jouthe">
             <h3>Sebastien Jouthe</h3>
             <p class="driver-meta">2 yrs Uber · 1 yr Lyft · HVAC certified</p>
-            <p class="driver-desc">Reliable chauffeur known for punctual pickups and smooth, comfortable rides.</p>
-            <div class="card-actions"><button class="btn btn-primary btn-sm" type="button">Select Driver</button></div>
+            <p class="driver-desc">Reliable chauffeur known for punctual pickups and smooth rides.</p>
+            <div class="card-actions"><button class="btn btn-primary btn-sm" type="button">Select</button></div>
           </article>
 
           <article class="card driver-card" data-driver-id="nason" data-driver-name="Nason Valcin" tabindex="0" role="button">
@@ -90,23 +88,21 @@
             <h3>Nason Valcin</h3>
             <p class="driver-meta">4 yrs Uber · 2 yrs Lyft</p>
             <p class="driver-desc">Experienced professional with strong route knowledge and customer-first service.</p>
-            <div class="card-actions"><button class="btn btn-primary btn-sm" type="button">Select Driver</button></div>
+            <div class="card-actions"><button class="btn btn-primary btn-sm" type="button">Select</button></div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- STEP 2: VEHICLES -->
-    <section class="section" id="step-vehicle">
+    <!-- STEP 2: VEHICLES — auto-reveals with animation on driver selection -->
+    <section class="section vehicle-section-locked" id="step-vehicle">
       <div class="container">
-        <div class="section-head" style="text-align:left;margin-bottom:20px">
-          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
-            <div>
-              <h2>Choose Your Vehicle</h2>
-              <p class="lead">Vehicle selection is locked until a driver is selected.</p>
-            </div>
-            <div class="hint" id="vehicleHint">Locked: Select a driver first</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px">
+          <div>
+            <h2>Step 2 — Choose Your Vehicle</h2>
+            <p class="lead">Unlocks after selecting a driver. <span class="step-unlocked-text">Step 2 Unlocked ✓</span></p>
           </div>
+          <div class="hint" id="vehicleHint">Locked</div>
         </div>
 
         <div class="grid-3" id="vehicleGrid">
@@ -116,7 +112,7 @@
             <h3>Executive Sedan</h3>
             <p class="vehicle-meta">Up to 3 passengers · 2 luggage</p>
             <p class="vehicle-desc">Ideal for airport transfers and business travel.</p>
-            <div class="card-actions"><button class="btn btn-primary btn-sm" type="button">Select Vehicle</button></div>
+            <div class="card-actions"><button class="btn btn-primary btn-sm" type="button">Select</button></div>
           </article>
 
           <article class="card vehicle-card" data-vehicle-id="suv" data-vehicle-name="Luxury SUV" tabindex="0" role="button">
@@ -125,7 +121,7 @@
             <h3>Luxury SUV</h3>
             <p class="vehicle-meta">Up to 6 passengers · 5 luggage</p>
             <p class="vehicle-desc">Extra comfort and space for premium rides.</p>
-            <div class="card-actions"><button class="btn btn-primary btn-sm" type="button">Select Vehicle</button></div>
+            <div class="card-actions"><button class="btn btn-primary btn-sm" type="button">Select</button></div>
           </article>
 
           <article class="card vehicle-card" data-vehicle-id="van" data-vehicle-name="Premium Van" tabindex="0" role="button">
@@ -134,7 +130,7 @@
             <h3>Premium Van</h3>
             <p class="vehicle-meta">Up to 10 passengers · 10 luggage</p>
             <p class="vehicle-desc">Best for group transportation and events.</p>
-            <div class="card-actions"><button class="btn btn-primary btn-sm" type="button">Select Vehicle</button></div>
+            <div class="card-actions"><button class="btn btn-primary btn-sm" type="button">Select</button></div>
           </article>
         </div>
       </div>
@@ -143,8 +139,8 @@
     <!-- STEP 3: TRIP DETAILS -->
     <section class="section" id="step-route">
       <div class="container">
-        <h2>Trip Details</h2>
-        <p class="lead" style="margin-bottom:24px">Enter pickup &amp; drop-off. Distance is calculated automatically.</p>
+        <h2>Step 3 — Trip Details</h2>
+        <p class="lead" style="margin-bottom:20px">Enter pickup &amp; drop-off. Distance is calculated automatically.</p>
 
         <form class="card booking-form" id="bookingForm" novalidate>
           <label>
@@ -159,21 +155,20 @@
             <label>Date <span class="req">*</span><input id="tripDate" type="date" required></label>
             <label>Time <span class="req">*</span><input id="tripTime" type="time" required></label>
           </div>
-          <label>Special Requests<textarea id="requests" rows="3" placeholder="Flight number, child seat, stops, etc."></textarea></label>
+          <label>Special Requests<textarea id="requests" rows="2" placeholder="Flight number, child seat, stops, etc."></textarea></label>
         </form>
 
         <!-- ESTIMATE -->
-        <div class="card" style="margin-top:20px">
+        <div class="card" style="margin-top:16px">
           <h3 style="margin-top:0">Trip Estimate</h3>
-          <p class="lead" style="margin-top:4px">Rate: <strong>$5 / mile</strong> · Minimum: <strong>$75</strong></p>
-
-          <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:16px">
+          <p class="lead" style="margin-top:3px">Rate: <strong>$5/mile</strong> · Minimum: <strong>$75</strong></p>
+          <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:14px">
             <div><p class="muted">Driver</p><strong id="selectedDriverText">None</strong></div>
             <div><p class="muted">Vehicle</p><strong id="selectedVehicleText">None</strong></div>
             <div><p class="muted">Distance</p><strong id="milesText">—</strong></div>
-            <div><p class="muted">Estimated Total</p><strong id="totalText" class="text-red" style="font-size:18px">$ —</strong></div>
+            <div><p class="muted">Estimated Total</p><strong id="totalText" class="text-red">$ —</strong></div>
           </div>
-          <p id="calcMsg" class="muted" style="margin-top:12px"></p>
+          <p id="calcMsg" class="muted" style="margin-top:10px"></p>
         </div>
       </div>
     </section>
@@ -182,15 +177,15 @@
     <section class="section" id="step-map">
       <div class="container">
         <h2>Route Preview</h2>
-        <p class="lead" style="margin-bottom:16px">Preview updates after entering addresses.</p>
+        <p class="lead" style="margin-bottom:14px">Preview updates after entering addresses.</p>
         <div class="card" style="padding:0;overflow:hidden">
           <iframe id="mapFrame" title="Map preview" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Miami&output=embed" style="width:100%;height:340px;border:0"></iframe>
+            src="https://www.google.com/maps?q=Miami&output=embed" style="width:100%;height:300px;border:0"></iframe>
         </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
-          <a class="btn btn-ghost" id="openPickup" href="#" target="_blank" rel="noreferrer">Open Pickup</a>
-          <a class="btn btn-ghost" id="openDropoff" href="#" target="_blank" rel="noreferrer">Open Drop-off</a>
-          <a class="btn btn-primary" id="openRoute" href="#" target="_blank" rel="noreferrer">Open Route</a>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+          <a class="btn btn-ghost btn-sm" id="openPickup" href="#" target="_blank" rel="noreferrer">Open Pickup</a>
+          <a class="btn btn-ghost btn-sm" id="openDropoff" href="#" target="_blank" rel="noreferrer">Open Drop-off</a>
+          <a class="btn btn-primary btn-sm" id="openRoute" href="#" target="_blank" rel="noreferrer">Open Route</a>
         </div>
       </div>
     </section>
@@ -201,7 +196,7 @@
         <div class="cta-strip">
           <div>
             <p class="cta-title">Continue to payment</p>
-            <p class="cta-sub">Button unlocks after driver + vehicle + distance are ready.</p>
+            <p class="cta-sub">Unlocks after driver + vehicle + route are ready.</p>
           </div>
           <button id="continueBookingBtn" class="btn btn-primary" disabled>Continue Booking</button>
         </div>
@@ -212,7 +207,7 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-bottom">
-        <span>&copy; <span id="footerYear">2026</span> [Your Brand Name]</span>
+        <span>&copy; <span id="footerYear">2026</span> Chauffeur App</span>
         <span>Licensed &amp; Insured</span>
       </div>
     </div>
