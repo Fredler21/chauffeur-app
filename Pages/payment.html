@@ -1,158 +1,147 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Payment | [Your Brand Name]</title>
-  <meta name="description" content="Confirm your trip details and complete payment securely." />
-
+  <meta name="description" content="Confirm your trip and pay securely with Stripe.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- pages/ needs ../ to reach assets -->
-  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
-
-<body class="theme-guardian">
+<body>
+  <div class="page-loader" id="pageLoader"><div class="loader-ring"></div></div>
   <div class="bg-glow" aria-hidden="true"></div>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="container nav">
-      <a class="brand" href="../index.html" aria-label="Home">
-        <span class="logo-dot" aria-hidden="true"></span>
-        <span class="brand-name">[Your Brand Name]</span>
-      </a>
-
-      <a class="btn btn-ghost" href="book.html">← Back to Booking</a>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a class="brand" href="../index.html"><span class="logo-dot"></span><span>[Your Brand Name]</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="../index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="book.html">Book a Ride</a>
+      </div>
+      <div class="nav-right">
+        <button class="dm-toggle" id="dmToggle" aria-label="Toggle dark mode"></button>
+        <a class="btn btn-ghost btn-sm" href="book.html">← Back to Booking</a>
+        <button class="nav-burger" id="navBurger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
     </div>
-  </header>
+  </nav>
 
   <main>
-    <!-- TITLE -->
-    <section class="section">
+    <section class="section" style="padding-top:40px">
       <div class="container">
-        <h1>Confirm & Pay</h1>
-        <p class="lead">Review your trip details, then pay securely with Stripe.</p>
-      </div>
-    </section>
+        <h1 style="font-size:clamp(26px,3vw,38px);margin-bottom:4px">Confirm &amp; Pay</h1>
+        <p class="lead" style="margin-bottom:32px">Review your trip, then pay securely with Stripe.</p>
 
-    <!-- CONTENT -->
-    <section class="section">
-      <div class="container" style="display:grid;grid-template-columns:1.2fr .8fr;gap:16px;">
-        <!-- LEFT: SUMMARY -->
-        <div class="card">
-          <h2 style="margin-top:0;">Trip Summary</h2>
-          <p class="muted" id="missingMsg" style="display:none;">
-            Missing booking details. Please go back and complete your booking.
-          </p>
+        <!-- PROGRESS -->
+        <div class="progress-steps" style="margin-bottom:36px">
+          <div class="progress-step is-done" data-step="1"><span class="step-num">✓</span> Driver</div>
+          <div class="progress-step is-done" data-step="2"><span class="step-num">✓</span> Vehicle</div>
+          <div class="progress-step is-done" data-step="3"><span class="step-num">✓</span> Route</div>
+          <div class="progress-step is-active" data-step="4"><span class="step-num">4</span> Pay</div>
+        </div>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px;">
-            <div>
-              <p class="muted">Driver</p>
-              <strong id="sumDriver">—</strong>
-            </div>
-            <div>
-              <p class="muted">Vehicle</p>
-              <strong id="sumVehicle">—</strong>
-            </div>
-            <div>
-              <p class="muted">Pickup</p>
-              <strong id="sumPickup">—</strong>
-            </div>
-            <div>
-              <p class="muted">Drop-off</p>
-              <strong id="sumDropoff">—</strong>
-            </div>
-            <div>
-              <p class="muted">Date / Time</p>
-              <strong id="sumDateTime">—</strong>
-            </div>
-            <div>
-              <p class="muted">Distance</p>
-              <strong id="sumMiles">—</strong>
-            </div>
-          </div>
+        <div class="pay-summary-grid" id="payContent">
+          <!-- LEFT: SUMMARY -->
+          <div class="card">
+            <h2 style="margin-top:0;font-size:22px">Trip Summary</h2>
+            <p class="muted" id="missingMsg" style="display:none;color:var(--red-bright)">
+              Missing booking details. Please go back and complete your booking.
+            </p>
 
-          <div class="divider" style="margin:14px 0;"></div>
-
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
-            <div>
-              <p class="muted" style="margin:0;">Estimated Total</p>
-              <p class="lead" style="margin:6px 0 0;"><strong id="sumTotal">$ —</strong></p>
-              <p class="muted" style="margin-top:6px;font-size:12px;">
-                Final total may change with stops, waiting time, or route updates.
-              </p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px">
+              <div><p class="muted">Driver</p><strong id="sumDriver">—</strong></div>
+              <div><p class="muted">Vehicle</p><strong id="sumVehicle">—</strong></div>
+              <div><p class="muted">Pickup</p><strong id="sumPickup">—</strong></div>
+              <div><p class="muted">Drop-off</p><strong id="sumDropoff">—</strong></div>
+              <div><p class="muted">Date / Time</p><strong id="sumDateTime">—</strong></div>
+              <div><p class="muted">Distance</p><strong id="sumMiles">—</strong></div>
             </div>
 
-            <div style="text-align:right;">
-              <p class="muted" style="margin:0;">Payment methods</p>
-              <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px;flex-wrap:wrap;">
-                <span class="pill" style="padding:8px 10px;">Debit</span>
-                <span class="pill" style="padding:8px 10px;">Credit</span>
-                <span class="pill" style="padding:8px 10px;">Apple Pay</span>
+            <div class="divider" style="margin:18px 0"></div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap">
+              <div>
+                <p class="muted">Estimated Total</p>
+                <p style="margin:4px 0 0;font-size:24px;font-weight:900" class="text-red" id="sumTotal">$ —</p>
+                <p class="muted" style="margin-top:6px;font-size:11px">Final total may change with stops or route updates.</p>
+              </div>
+              <div style="text-align:right">
+                <p class="muted">Accepted</p>
+                <div style="display:flex;gap:8px;margin-top:6px">
+                  <span class="pill">Debit</span>
+                  <span class="pill">Credit</span>
+                  <span class="pill">Apple Pay</span>
+                </div>
               </div>
             </div>
+
+            <div class="divider" style="margin:18px 0"></div>
+
+            <h3 style="margin-top:0">Route Preview</h3>
+            <div style="border-radius:var(--radius-sm);overflow:hidden;margin-top:8px">
+              <iframe id="mapFrame" title="Route preview" loading="lazy"
+                src="https://www.google.com/maps?q=Miami&output=embed" style="width:100%;height:300px;border:0"></iframe>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+              <a class="btn btn-ghost btn-sm" id="openPickup" href="#" target="_blank">Open Pickup</a>
+              <a class="btn btn-ghost btn-sm" id="openDropoff" href="#" target="_blank">Open Drop-off</a>
+              <a class="btn btn-primary btn-sm" id="openRoute" href="#" target="_blank">Open Route</a>
+            </div>
           </div>
 
-          <div class="divider" style="margin:14px 0;"></div>
+          <!-- RIGHT: PAY -->
+          <aside>
+            <div class="card" style="position:sticky;top:100px">
+              <h2 style="margin-top:0;font-size:20px">Secure Checkout</h2>
+              <p class="lead" style="font-size:14px;margin-bottom:16px">Powered by Stripe. Your card details are never stored.</p>
 
-          <h3 style="margin-top:0;">Route Preview</h3>
-          <div class="card" style="padding:0;overflow:hidden;">
-            <iframe
-              id="mapFrame"
-              title="Route preview"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=[Your%20City/Areas]&output=embed"
-              style="width:100%;height:320px;border:0;">
-            </iframe>
-          </div>
+              <div class="card" style="background:var(--glass);margin-bottom:16px">
+                <p class="muted">Status</p>
+                <p id="statusText" style="margin:4px 0 0;font-weight:700">Ready to pay</p>
+              </div>
 
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
-            <a class="btn btn-ghost" id="openPickup" href="#" target="_blank" rel="noreferrer">Open Pickup</a>
-            <a class="btn btn-ghost" id="openDropoff" href="#" target="_blank" rel="noreferrer">Open Drop-off</a>
-            <a class="btn btn-primary" id="openRoute" href="#" target="_blank" rel="noreferrer">Open Route</a>
+              <button id="stripePayBtn" class="btn btn-primary" style="width:100%">
+                Pay Now (Stripe)
+              </button>
+
+              <p class="muted" style="margin-top:14px;font-size:11px;text-align:center">
+                Test mode: use card <strong>4242 4242 4242 4242</strong>
+              </p>
+            </div>
+          </aside>
+        </div>
+
+        <!-- SUCCESS STATE (hidden by default) -->
+        <div class="pay-success" id="paySuccess">
+          <div class="checkmark-circle">✓</div>
+          <h2>Payment Successful</h2>
+          <p class="lead" style="margin-top:8px">Your ride is confirmed. Check your email for details.</p>
+          <div style="margin-top:24px;display:flex;gap:12px;justify-content:center">
+            <a class="btn btn-primary" href="dashboard.html">Go to Dashboard</a>
+            <a class="btn btn-ghost" href="../index.html">Back Home</a>
           </div>
         </div>
 
-        <!-- RIGHT: PAY -->
-        <aside class="card">
-          <h2 style="margin-top:0;">Secure Checkout</h2>
-          <p class="lead">You’ll be redirected to Stripe to complete payment.</p>
-
-          <div class="card" style="margin-top:12px;">
-            <p class="muted" style="margin:0;">Checkout Status</p>
-            <p id="statusText" style="margin:8px 0 0;">Ready to pay</p>
-          </div>
-
-          <div class="divider" style="margin:14px 0;"></div>
-
-          <!-- YOUR STRIPE CHECKOUT LINK (TEST) -->
-          <a id="stripePayBtn" class="btn btn-primary" href="#" style="width:100%;text-align:center;">
-            Pay Now (Stripe)
-          </a>
-
-          <p class="muted" style="margin-top:10px;font-size:12px;">
-            Powered by Stripe. Your card details are not stored on this website.
-          </p>
-
-          <p class="muted" style="margin-top:10px;font-size:12px;">
-            Tip: In test mode, use <strong>4242 4242 4242 4242</strong>.
-          </p>
-        </aside>
       </div>
     </section>
   </main>
 
-  <!-- JS (Payment page only) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>&copy; <span id="footerYear">2026</span> [Your Brand Name]</span>
+        <span>Licensed &amp; Insured</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="../assets/js/app.js"></script>
   <script src="../assets/js/payment.js"></script>
 </body>
 </html>
-
-<a id="stripePayBtn" class="btn btn-primary" href="#">
-  Pay Now (Stripe)
-</a>
-

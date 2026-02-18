@@ -1,263 +1,225 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Book a Ride | [Your Brand Name]</title>
-  <meta name="description" content="Book a premium private chauffeur ride." />
-
+  <meta name="description" content="Book a premium private chauffeur ride with route preview and live pricing.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- pages/ needs ../ to reach assets -->
-  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
-
-<body class="theme-guardian">
+<body>
+  <div class="page-loader" id="pageLoader"><div class="loader-ring"></div></div>
   <div class="bg-glow" aria-hidden="true"></div>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="container nav">
-      <a class="brand" href="../index.html" aria-label="Home">
-        <span class="logo-dot" aria-hidden="true"></span>
-        <span class="brand-name">[Your Brand Name]</span>
-      </a>
-
-      <a class="btn btn-ghost" href="../index.html">← Back to Home</a>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a class="brand" href="../index.html"><span class="logo-dot"></span><span>[Your Brand Name]</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="../index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="book.html" class="active">Book a Ride</a>
+      </div>
+      <div class="nav-right">
+        <button class="dm-toggle" id="dmToggle" aria-label="Toggle dark mode"></button>
+        <a class="btn btn-ghost btn-sm" href="../index.html">← Back</a>
+        <button class="nav-burger" id="navBurger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
     </div>
-  </header>
+  </nav>
 
   <main>
     <!-- TITLE -->
-    <section class="section">
+    <section class="section" style="padding-bottom:0">
       <div class="container">
-        <h1>Book Your Chauffeur</h1>
-        <p class="lead">Step 1: Choose driver → Step 2: Choose vehicle → Step 3: Enter pickup/drop-off → Step 4: Continue to payment.</p>
+        <h1 style="font-size:clamp(26px,3vw,38px)">Book Your Chauffeur</h1>
+        <p class="lead" style="margin-top:8px">Driver → Vehicle → Route → Payment</p>
       </div>
     </section>
 
-    <!-- STEP BAR -->
-    <section class="section">
-      <div class="container steps">
-        <div class="step is-active">1. Driver</div>
-        <div class="step" id="stepVehicle">2. Vehicle</div>
-        <div class="step" id="stepTrip">3. Trip</div>
-        <div class="step">4. Confirm</div>
+    <!-- PROGRESS BAR -->
+    <section class="section" style="padding:28px 0">
+      <div class="container">
+        <div class="progress-steps" id="progressSteps">
+          <div class="progress-step is-active" data-step="1"><span class="step-num">1</span> Driver</div>
+          <div class="progress-step" data-step="2"><span class="step-num">2</span> Vehicle</div>
+          <div class="progress-step" data-step="3"><span class="step-num">3</span> Route</div>
+          <div class="progress-step" data-step="4"><span class="step-num">4</span> Confirm</div>
+        </div>
       </div>
     </section>
 
-    <!-- DRIVERS -->
-    <section class="section" id="drivers">
+    <!-- STEP 1: DRIVERS -->
+    <section class="section" id="step-driver" style="padding-top:0">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Choose Your Driver</h2>
-            <p class="lead">Tap a driver to select. Vehicle selection unlocks after.</p>
+        <div class="section-head" style="text-align:left;margin-bottom:20px">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+            <div>
+              <h2>Choose Your Driver</h2>
+              <p class="lead">Tap a driver to select. Vehicle selection unlocks after.</p>
+            </div>
+            <div class="hint" id="driverHint">Required: Select 1 driver</div>
           </div>
-          <div class="hint" id="driverHint">Required: Select 1 driver</div>
         </div>
 
         <div class="grid-3">
-          <article class="card driver-card" data-driver-id="fredler" data-driver-name="Fredler Gracia Pierre-Louis" tabindex="0" role="button" aria-label="Select Fredler">
+          <article class="card driver-card" data-driver-id="fredler" data-driver-name="Fredler Gracia Pierre-Louis" tabindex="0" role="button">
             <div class="card-badge available">Available</div>
-            <img src="../assets/images/drivers/driver1.jpg" alt="Fredler Gracia Pierre-Louis" />
+            <img src="../assets/images/drivers/driver1.jpg" alt="Fredler Gracia Pierre-Louis">
             <h3>Fredler Gracia Pierre-Louis</h3>
-            <p class="driver-meta">3 yrs Uber • 2 yrs Lyft • 3 languages</p>
-            <p class="driver-desc">
-              Cybersecurity student with strong safety awareness and premium service mindset.
-            </p>
-            <div class="card-actions">
-              <button class="btn btn-primary btn-sm" type="button">Select Driver</button>
-            </div>
+            <p class="driver-meta">3 yrs Uber · 2 yrs Lyft · 3 languages</p>
+            <p class="driver-desc">Cybersecurity student with strong safety awareness and premium service mindset.</p>
+            <div class="card-actions"><button class="btn btn-primary btn-sm" type="button">Select Driver</button></div>
           </article>
 
-          <article class="card driver-card" data-driver-id="sebastien" data-driver-name="Sebastien Jouthe" tabindex="0" role="button" aria-label="Select Sebastien">
+          <article class="card driver-card" data-driver-id="sebastien" data-driver-name="Sebastien Jouthe" tabindex="0" role="button">
             <div class="card-badge available">Available</div>
-            <img src="../assets/images/drivers/driver2.jpg" alt="Sebastien Jouthe" />
+            <img src="../assets/images/drivers/driver2.jpg" alt="Sebastien Jouthe">
             <h3>Sebastien Jouthe</h3>
-            <p class="driver-meta">2 yrs Uber • 1 yr Lyft • HVAC certified</p>
-            <p class="driver-desc">
-              Reliable chauffeur known for punctual pickups and smooth, comfortable rides.
-            </p>
-            <div class="card-actions">
-              <button class="btn btn-primary btn-sm" type="button">Select Driver</button>
-            </div>
+            <p class="driver-meta">2 yrs Uber · 1 yr Lyft · HVAC certified</p>
+            <p class="driver-desc">Reliable chauffeur known for punctual pickups and smooth, comfortable rides.</p>
+            <div class="card-actions"><button class="btn btn-primary btn-sm" type="button">Select Driver</button></div>
           </article>
 
-          <article class="card driver-card" data-driver-id="nason" data-driver-name="Nason Valcin" tabindex="0" role="button" aria-label="Select Nason">
+          <article class="card driver-card" data-driver-id="nason" data-driver-name="Nason Valcin" tabindex="0" role="button">
             <div class="card-badge available">Available</div>
-            <img src="../assets/images/drivers/driver3.jpg" alt="Nason Valcin" />
+            <img src="../assets/images/drivers/driver3.jpg" alt="Nason Valcin">
             <h3>Nason Valcin</h3>
-            <p class="driver-meta">4 yrs Uber • 2 yrs Lyft</p>
-            <p class="driver-desc">
-              Experienced professional with strong route knowledge and customer-first service.
-            </p>
-            <div class="card-actions">
-              <button class="btn btn-primary btn-sm" type="button">Select Driver</button>
-            </div>
+            <p class="driver-meta">4 yrs Uber · 2 yrs Lyft</p>
+            <p class="driver-desc">Experienced professional with strong route knowledge and customer-first service.</p>
+            <div class="card-actions"><button class="btn btn-primary btn-sm" type="button">Select Driver</button></div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- VEHICLES -->
-    <section class="section" id="vehicles">
+    <!-- STEP 2: VEHICLES -->
+    <section class="section" id="step-vehicle">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Choose Your Vehicle</h2>
-            <p class="lead">Vehicle selection is locked until a driver is selected.</p>
+        <div class="section-head" style="text-align:left;margin-bottom:20px">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+            <div>
+              <h2>Choose Your Vehicle</h2>
+              <p class="lead">Vehicle selection is locked until a driver is selected.</p>
+            </div>
+            <div class="hint" id="vehicleHint">Locked: Select a driver first</div>
           </div>
-          <div class="hint" id="vehicleHint">Locked: Select a driver first</div>
         </div>
 
-        <div class="grid-3">
-          <article class="card vehicle-card" data-vehicle-id="sedan" data-vehicle-name="Executive Sedan" tabindex="0" role="button" aria-label="Select Executive Sedan">
+        <div class="grid-3" id="vehicleGrid">
+          <article class="card vehicle-card" data-vehicle-id="sedan" data-vehicle-name="Executive Sedan" tabindex="0" role="button">
             <div class="card-badge available">Available</div>
-            <img src="../assets/images/vehicles/sedan.jpg" alt="Executive Sedan" />
+            <img src="../assets/images/vehicles/sedan.jpg" alt="Executive Sedan">
             <h3>Executive Sedan</h3>
-            <p class="vehicle-meta">Up to 3 passengers • 2 luggage</p>
+            <p class="vehicle-meta">Up to 3 passengers · 2 luggage</p>
             <p class="vehicle-desc">Ideal for airport transfers and business travel.</p>
-            <div class="card-actions">
-              <button class="btn btn-primary btn-sm" type="button">Select Vehicle</button>
-            </div>
+            <div class="card-actions"><button class="btn btn-primary btn-sm" type="button">Select Vehicle</button></div>
           </article>
 
-          <article class="card vehicle-card" data-vehicle-id="suv" data-vehicle-name="Luxury SUV" tabindex="0" role="button" aria-label="Select Luxury SUV">
+          <article class="card vehicle-card" data-vehicle-id="suv" data-vehicle-name="Luxury SUV" tabindex="0" role="button">
             <div class="card-badge available">Available</div>
-            <img src="../assets/images/vehicles/suv.jpg" alt="Luxury SUV" />
+            <img src="../assets/images/vehicles/suv.jpg" alt="Luxury SUV">
             <h3>Luxury SUV</h3>
-            <p class="vehicle-meta">Up to 6 passengers • 5 luggage</p>
+            <p class="vehicle-meta">Up to 6 passengers · 5 luggage</p>
             <p class="vehicle-desc">Extra comfort and space for premium rides.</p>
-            <div class="card-actions">
-              <button class="btn btn-primary btn-sm" type="button">Select Vehicle</button>
-            </div>
+            <div class="card-actions"><button class="btn btn-primary btn-sm" type="button">Select Vehicle</button></div>
           </article>
 
-          <article class="card vehicle-card" data-vehicle-id="van" data-vehicle-name="Premium Van" tabindex="0" role="button" aria-label="Select Premium Van">
+          <article class="card vehicle-card" data-vehicle-id="van" data-vehicle-name="Premium Van" tabindex="0" role="button">
             <div class="card-badge available">Available</div>
-            <img src="../assets/images/vehicles/van.jpg" alt="Premium Van" />
+            <img src="../assets/images/vehicles/van.jpg" alt="Premium Van">
             <h3>Premium Van</h3>
-            <p class="vehicle-meta">Up to 10 passengers • 10 luggage</p>
+            <p class="vehicle-meta">Up to 10 passengers · 10 luggage</p>
             <p class="vehicle-desc">Best for group transportation and events.</p>
-            <div class="card-actions">
-              <button class="btn btn-primary btn-sm" type="button">Select Vehicle</button>
-            </div>
+            <div class="card-actions"><button class="btn btn-primary btn-sm" type="button">Select Vehicle</button></div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- TRIP DETAILS -->
-    <section class="section" id="trip">
+    <!-- STEP 3: TRIP DETAILS -->
+    <section class="section" id="step-route">
       <div class="container">
         <h2>Trip Details</h2>
-        <p class="lead">Enter pickup + drop-off. We calculate miles automatically, then show your estimate.</p>
+        <p class="lead" style="margin-bottom:24px">Enter pickup &amp; drop-off. Distance is calculated automatically.</p>
 
         <form class="card booking-form" id="bookingForm" novalidate>
           <label>
             Pickup Location <span class="req">*</span>
-            <input id="pickup" type="text" placeholder="Enter pickup address" required />
+            <input id="pickup" type="text" placeholder="Enter pickup address" required>
           </label>
-
           <label>
             Drop-off Location <span class="req">*</span>
-            <input id="dropoff" type="text" placeholder="Enter destination address" required />
+            <input id="dropoff" type="text" placeholder="Enter destination address" required>
           </label>
-
           <div class="form-row">
-            <label>
-              Date <span class="req">*</span>
-              <input id="tripDate" type="date" required />
-            </label>
-
-            <label>
-              Time <span class="req">*</span>
-              <input id="tripTime" type="time" required />
-            </label>
+            <label>Date <span class="req">*</span><input id="tripDate" type="date" required></label>
+            <label>Time <span class="req">*</span><input id="tripTime" type="time" required></label>
           </div>
-
-          <label>
-            Special Requests
-            <textarea id="requests" rows="4" placeholder="Flight number, child seat, stops, etc."></textarea>
-          </label>
+          <label>Special Requests<textarea id="requests" rows="3" placeholder="Flight number, child seat, stops, etc."></textarea></label>
         </form>
 
         <!-- ESTIMATE -->
-        <div class="card" style="margin-top:16px;">
-          <h3 style="margin-top:0;">Trip Estimate</h3>
-          <p class="lead" style="margin-top:6px;">Rate: <strong>$5 / mile</strong> • Minimum: <strong>$75</strong></p>
+        <div class="card" style="margin-top:20px">
+          <h3 style="margin-top:0">Trip Estimate</h3>
+          <p class="lead" style="margin-top:4px">Rate: <strong>$5 / mile</strong> · Minimum: <strong>$75</strong></p>
 
-          <div style="display:flex;gap:22px;flex-wrap:wrap;margin-top:12px;">
-            <div>
-              <p class="muted">Selected Driver</p>
-              <strong id="selectedDriverText">None</strong>
-            </div>
-
-            <div>
-              <p class="muted">Selected Vehicle</p>
-              <strong id="selectedVehicleText">None</strong>
-            </div>
-
-            <div>
-              <p class="muted">Distance</p>
-              <strong id="milesText">—</strong>
-            </div>
-
-            <div>
-              <p class="muted">Estimated Total</p>
-              <strong id="totalText">$ —</strong>
-            </div>
+          <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:16px">
+            <div><p class="muted">Driver</p><strong id="selectedDriverText">None</strong></div>
+            <div><p class="muted">Vehicle</p><strong id="selectedVehicleText">None</strong></div>
+            <div><p class="muted">Distance</p><strong id="milesText">—</strong></div>
+            <div><p class="muted">Estimated Total</p><strong id="totalText" class="text-red" style="font-size:18px">$ —</strong></div>
           </div>
-
-          <p id="calcMsg" class="muted" style="margin-top:12px;"></p>
+          <p id="calcMsg" class="muted" style="margin-top:12px"></p>
         </div>
       </div>
     </section>
 
     <!-- MAP PREVIEW -->
-    <section class="section" id="map">
+    <section class="section" id="step-map">
       <div class="container">
         <h2>Route Preview</h2>
-        <p class="lead">This preview updates after pickup + drop-off.</p>
-
-        <div class="card">
-          <iframe
-            id="mapFrame"
-            title="Map preview"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=[Your%20City/Areas]&output=embed"
-            style="width:100%;height:320px;border:0;">
-          </iframe>
-
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
-            <a class="btn btn-ghost" id="openPickup" href="#" target="_blank" rel="noreferrer">Open Pickup</a>
-            <a class="btn btn-ghost" id="openDropoff" href="#" target="_blank" rel="noreferrer">Open Drop-off</a>
-            <a class="btn btn-primary" id="openRoute" href="#" target="_blank" rel="noreferrer">Open Route</a>
-          </div>
+        <p class="lead" style="margin-bottom:16px">Preview updates after entering addresses.</p>
+        <div class="card" style="padding:0;overflow:hidden">
+          <iframe id="mapFrame" title="Map preview" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Miami&output=embed" style="width:100%;height:340px;border:0"></iframe>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+          <a class="btn btn-ghost" id="openPickup" href="#" target="_blank" rel="noreferrer">Open Pickup</a>
+          <a class="btn btn-ghost" id="openDropoff" href="#" target="_blank" rel="noreferrer">Open Drop-off</a>
+          <a class="btn btn-primary" id="openRoute" href="#" target="_blank" rel="noreferrer">Open Route</a>
         </div>
       </div>
     </section>
 
     <!-- CTA -->
-    <section class="section">
-      <div class="container cta-strip">
-        <div>
-          <p class="cta-title">Continue to payment</p>
-          <p class="cta-sub">Button unlocks after you select driver + vehicle and miles are calculated.</p>
+    <section class="section" id="step-confirm">
+      <div class="container">
+        <div class="cta-strip">
+          <div>
+            <p class="cta-title">Continue to payment</p>
+            <p class="cta-sub">Button unlocks after driver + vehicle + distance are ready.</p>
+          </div>
+          <button id="continueBookingBtn" class="btn btn-primary" disabled>Continue Booking</button>
         </div>
-
-        <button id="continueBookingBtn" class="btn btn-primary" disabled>
-          Continue Booking
-        </button>
       </div>
     </section>
   </main>
 
-  <!-- JS -->
-  <script src="../assets/js/script.js"></script>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>&copy; <span id="footerYear">2026</span> [Your Brand Name]</span>
+        <span>Licensed &amp; Insured</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/booking.js"></script>
 </body>
 </html>

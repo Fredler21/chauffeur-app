@@ -1,115 +1,75 @@
+/* ==========================================================
+   PAYMENT.JS — Stripe integration, summary hydration, success
+   ========================================================== */
 (() => {
-  // ✅ Your Stripe Checkout link (TEST)
-  // This is the link you sent earlier.
-  const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/test_6oU9AU0Dw7J17oD1nh8N200";
+  'use strict';
+
+  // Stripe Checkout URL (test mode)
+  const STRIPE_CHECKOUT_URL = 'https://buy.stripe.com/test_6oU9AU0Dw7J17oD1nh8N200';
 
   const qs = new URLSearchParams(window.location.search);
+  const driver  = qs.get('driver');
+  const vehicle = qs.get('vehicle');
+  const pickup  = qs.get('pickup');
+  const dropoff = qs.get('dropoff');
+  const date    = qs.get('date');
+  const time    = qs.get('time');
+  const miles   = qs.get('miles');
+  const total   = qs.get('total');
 
-  const driver = qs.get("driver");
-  const vehicle = qs.get("vehicle");
-  const pickup = qs.get("pickup");
-  const dropoff = qs.get("dropoff");
-  const date = qs.get("date");
-  const time = qs.get("time");
-  const miles = qs.get("miles");
-  const total = qs.get("total");
+  const hasAll = driver && vehicle && pickup && dropoff && date && time && miles && total;
 
-  const missingMsg = document.getElementById("missingMsg");
-  const statusText = document.getElementById("statusText");
+  /* ── Elements ── */
+  const missingMsg  = document.getElementById('missingMsg');
+  const statusText  = document.getElementById('statusText');
+  const sumDriver   = document.getElementById('sumDriver');
+  const sumVehicle  = document.getElementById('sumVehicle');
+  const sumPickup   = document.getElementById('sumPickup');
+  const sumDropoff  = document.getElementById('sumDropoff');
+  const sumDateTime = document.getElementById('sumDateTime');
+  const sumMiles    = document.getElementById('sumMiles');
+  const sumTotal    = document.getElementById('sumTotal');
+  const mapFrame    = document.getElementById('mapFrame');
+  const openPickup  = document.getElementById('openPickup');
+  const openDropoff = document.getElementById('openDropoff');
+  const openRoute   = document.getElementById('openRoute');
+  const payBtn      = document.getElementById('stripePayBtn');
 
-  const sumDriver = document.getElementById("sumDriver");
-  const sumVehicle = document.getElementById("sumVehicle");
-  const sumPickup = document.getElementById("sumPickup");
-  const sumDropoff = document.getElementById("sumDropoff");
-  const sumDateTime = document.getElementById("sumDateTime");
-  const sumMiles = document.getElementById("sumMiles");
-  const sumTotal = document.getElementById("sumTotal");
+  function safe(el, v) { if (el) el.textContent = v || '—'; }
 
-  const mapFrame = document.getElementById("mapFrame");
-  const openPickup = document.getElementById("openPickup");
-  const openDropoff = document.getElementById("openDropoff");
-  const openRoute = document.getElementById("openRoute");
-
-  const stripePayBtn = document.getElementById("stripePayBtn");
-
-  const hasAll =
-    driver && vehicle && pickup && dropoff && date && time && miles && total;
-
-  function safeText(el, value) {
-    if (!el) return;
-    el.textContent = value || "—";
-  }
-
-  function setMapLinks(pick, drop) {
-    const pickupUrl = pick ? `https://www.google.com/maps?q=${encodeURIComponent(pick)}` : "#";
-    const dropoffUrl = drop ? `https://www.google.com/maps?q=${encodeURIComponent(drop)}` : "#";
-    const routeUrl = (pick && drop)
-      ? `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(pick)}&destination=${encodeURIComponent(drop)}&travelmode=driving`
-      : "#";
-
-    if (openPickup) openPickup.href = pickupUrl;
-    if (openDropoff) openDropoff.href = dropoffUrl;
-    if (openRoute) openRoute.href = routeUrl;
-
-    if (mapFrame) {
-      mapFrame.src = pick
-        ? `https://www.google.com/maps?q=${encodeURIComponent(pick)}&output=embed`
-        : `https://www.google.com/maps?q=[Your%20City/Areas]&output=embed`;
-    }
+  function setMapLinks(p, d) {
+    if (openPickup)  openPickup.href  = p ? `https://www.google.com/maps?q=${encodeURIComponent(p)}` : '#';
+    if (openDropoff) openDropoff.href = d ? `https://www.google.com/maps?q=${encodeURIComponent(d)}` : '#';
+    if (openRoute)   openRoute.href   = (p && d) ? `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(p)}&destination=${encodeURIComponent(d)}&travelmode=driving` : '#';
+    if (mapFrame && p) mapFrame.src = `https://www.google.com/maps?q=${encodeURIComponent(p)}&output=embed`;
   }
 
   if (!hasAll) {
-    if (missingMsg) missingMsg.style.display = "block";
-    if (statusText) statusText.textContent = "Missing booking details — go back to Booking.";
-    if (stripePayBtn) {
-      stripePayBtn.classList.add("disabled");
-      stripePayBtn.removeAttribute("href");
-      stripePayBtn.style.pointerEvents = "none";
-      stripePayBtn.style.opacity = "0.6";
-    }
+    if (missingMsg) missingMsg.style.display = 'block';
+    if (statusText) statusText.textContent = 'Missing details — go back to Booking.';
+    if (payBtn) { payBtn.disabled = true; payBtn.classList.add('disabled'); }
     setMapLinks(pickup, dropoff);
     return;
   }
 
-  // Fill summary
-  safeText(sumDriver, driver);
-  safeText(sumVehicle, vehicle);
-  safeText(sumPickup, pickup);
-  safeText(sumDropoff, dropoff);
-  safeText(sumDateTime, `${date} • ${time}`);
-  safeText(sumMiles, `${Number(miles).toFixed(1)} miles`);
-  safeText(sumTotal, `$${Number(total).toFixed(2)}`);
-
+  /* Fill summary */
+  safe(sumDriver, driver);
+  safe(sumVehicle, vehicle);
+  safe(sumPickup, pickup);
+  safe(sumDropoff, dropoff);
+  safe(sumDateTime, `${date} · ${time}`);
+  safe(sumMiles, `${Number(miles).toFixed(1)} miles`);
+  safe(sumTotal, `$${Number(total).toFixed(2)}`);
+  if (statusText) statusText.textContent = 'Ready to pay securely';
   setMapLinks(pickup, dropoff);
 
-  // Stripe checkout redirect
-  // Note: Stripe Checkout will show the best payment options automatically (card + Apple Pay when eligible).
-  if (stripePayBtn) {
-    stripePayBtn.href = STRIPE_CHECKOUT_URL;
-  }
-
-  if (statusText) statusText.textContent = "Ready to pay securely";
-})();
-
-(() => {
-
-  // ✅ YOUR STRIPE TEST CHECKOUT LINK
-  const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/test_6oU9AU0Dw7J17oD1nh8N200";
-
-  const stripeBtn = document.getElementById("stripePayBtn");
-
-  if (!stripeBtn) return;
-
-  stripeBtn.addEventListener("click", function (e) {
+  /* Pay button → Stripe */
+  payBtn?.addEventListener('click', e => {
     e.preventDefault();
-
-    stripeBtn.textContent = "Redirecting to Stripe...";
-    stripeBtn.style.pointerEvents = "none";
-    stripeBtn.style.opacity = "0.8";
-
-    // 🔥 Redirect straight to Stripe
-    window.location.href = STRIPE_CHECKOUT_URL;
+    payBtn.textContent = 'Redirecting to Stripe…';
+    payBtn.style.pointerEvents = 'none';
+    payBtn.style.opacity = '.7';
+    setTimeout(() => { window.location.href = STRIPE_CHECKOUT_URL; }, 600);
   });
 
 })();
-

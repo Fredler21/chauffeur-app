@@ -1,15 +1,25 @@
 {
   "name": "Chauffeur App",
   "short_name": "Chauffeur",
-  "start_url": "../Pages/index.html",
+  "description": "Premium chauffeur booking platform — luxury rides on demand.",
+  "start_url": "../index.html",
+  "scope": "../",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#2b6cb0",
+  "orientation": "portrait",
+  "background_color": "#0B0B0D",
+  "theme_color": "#B11226",
   "icons": [
     {
-      "src": "images/hero/hero-192.png",
+      "src": "images/hero/car1.jpg",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "images/hero/car2.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
     }
   ]
 }

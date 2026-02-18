@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dashboard | [Your Brand Name]</title>
+  <meta name="description" content="Your premium chauffeur dashboard — stats, recent trips, and quick booking.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <div class="page-loader" id="pageLoader"><div class="loader-ring"></div></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a class="brand" href="../index.html"><span class="logo-dot"></span><span>[Your Brand Name]</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="../index.html">Home</a>
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="book.html">Book a Ride</a>
+      </div>
+      <div class="nav-right">
+        <button class="dm-toggle" id="dmToggle" aria-label="Toggle dark mode"></button>
+        <a class="btn btn-primary btn-sm" href="book.html">New Booking</a>
+        <button class="nav-burger" id="navBurger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section" style="padding-top:40px">
+      <div class="container">
+
+        <!-- WELCOME -->
+        <div class="dash-welcome">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+            <div>
+              <h1 style="font-size:28px;margin-bottom:6px">Welcome back, Rider</h1>
+              <p class="lead">Here's your booking overview.</p>
+            </div>
+            <a class="btn btn-primary" href="book.html">Quick Book</a>
+          </div>
+        </div>
+
+        <!-- QUICK STATS -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <p class="stat-value">2</p>
+            <p class="stat-label">Upcoming Rides</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-value">14</p>
+            <p class="stat-label">Total Rides</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-value">SUV</p>
+            <p class="stat-label">Preferred Vehicle</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-value">Gold</p>
+            <p class="stat-label">Loyalty Tier</p>
+          </div>
+        </div>
+
+        <!-- HOW IT WORKS — Compact Bar -->
+        <h2 style="margin-bottom:16px;font-size:20px">How It Works</h2>
+        <div class="how-bar">
+          <a class="how-step-card" href="book.html#step-driver">
+            <div class="step-icon">👤</div>
+            <div>
+              <h4>1. Choose Driver</h4>
+              <p>Select a professional chauffeur</p>
+            </div>
+          </a>
+          <a class="how-step-card" href="book.html#step-vehicle">
+            <div class="step-icon">🚘</div>
+            <div>
+              <h4>2. Choose Vehicle</h4>
+              <p>Pick the best ride for your trip</p>
+            </div>
+          </a>
+          <a class="how-step-card" href="book.html#step-route">
+            <div class="step-icon">🗺️</div>
+            <div>
+              <h4>3. Enter Route</h4>
+              <p>See distance &amp; cost estimate</p>
+            </div>
+          </a>
+          <a class="how-step-card" href="book.html#step-confirm">
+            <div class="step-icon">✅</div>
+            <div>
+              <h4>4. Confirm &amp; Pay</h4>
+              <p>Secure Stripe checkout</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- RECENT TRIPS -->
+        <div class="card" style="overflow-x:auto">
+          <h3 style="margin-bottom:16px">Recent Trips</h3>
+          <table class="trips-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Driver</th>
+                <th>Vehicle</th>
+                <th>Route</th>
+                <th>Total</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Feb 20, 2026</td>
+                <td>Fredler G.</td>
+                <td>Luxury SUV</td>
+                <td>MIA → South Beach</td>
+                <td>$95.00</td>
+                <td><span class="status-badge upcoming">Upcoming</span></td>
+              </tr>
+              <tr>
+                <td>Feb 18, 2026</td>
+                <td>Sebastien J.</td>
+                <td>Executive Sedan</td>
+                <td>FLL → Brickell</td>
+                <td>$125.50</td>
+                <td><span class="status-badge upcoming">Upcoming</span></td>
+              </tr>
+              <tr>
+                <td>Feb 10, 2026</td>
+                <td>Nason V.</td>
+                <td>Premium Van</td>
+                <td>Downtown → MIA</td>
+                <td>$87.00</td>
+                <td><span class="status-badge completed">Completed</span></td>
+              </tr>
+              <tr>
+                <td>Feb 05, 2026</td>
+                <td>Fredler G.</td>
+                <td>Executive Sedan</td>
+                <td>Coral Gables → MIA</td>
+                <td>$75.00</td>
+                <td><span class="status-badge completed">Completed</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>&copy; <span id="footerYear">2026</span> [Your Brand Name]. All rights reserved.</span>
+        <span>Licensed &amp; Insured</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>
