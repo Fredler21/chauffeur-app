@@ -15,12 +15,16 @@
   /* ── Dark Mode Toggle ── */
   const dmToggle = document.getElementById('dmToggle');
   const saved = localStorage.getItem('theme');
-  // Default is dark (no class). Light adds .is-light
-  if (saved === 'light') dmToggle?.classList.add('is-light');
+  // Default is dark (no class). Light adds .is-light to body + toggle
+  function applyTheme(light) {
+    document.body.classList.toggle('is-light', light);
+    if (dmToggle) dmToggle.classList.toggle('is-light', light);
+  }
+  applyTheme(saved === 'light');
   dmToggle?.addEventListener('click', () => {
-    dmToggle.classList.toggle('is-light');
-    localStorage.setItem('theme', dmToggle.classList.contains('is-light') ? 'light' : 'dark');
-    // Future: toggle body class for light palette
+    const goLight = !document.body.classList.contains('is-light');
+    applyTheme(goLight);
+    localStorage.setItem('theme', goLight ? 'light' : 'dark');
   });
 
   /* ── Mobile Menu ── */

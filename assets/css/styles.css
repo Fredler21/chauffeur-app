@@ -24,10 +24,36 @@
   --font:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
 }
 
+/* ── Light Mode Override ── */
+body.is-light {
+  --bg:#F5F5F7;--bg-alt:#EEEEF0;--panel:#FFFFFF;--panel2:#F0F0F2;
+  --panel-glass:rgba(255,255,255,.82);--border:rgba(0,0,0,.08);
+  --border-hover:rgba(0,0,0,.16);--text:#1a1a1d;--text-dim:#555560;
+  --muted:#888896;--glass:rgba(0,0,0,.03);
+  --glass-hover:rgba(0,0,0,.06);
+  --shadow-sm:0 4px 20px rgba(0,0,0,.08);
+  --shadow-md:0 12px 40px rgba(0,0,0,.12);
+  --shadow-lg:0 25px 80px rgba(0,0,0,.18);
+  --shadow-red:0 12px 40px rgba(177,18,38,.15);
+}
+body.is-light .bg-glow{opacity:.3}
+body.is-light .navbar{background:rgba(245,245,247,.88)}
+body.is-light .hero-overlay{background:linear-gradient(160deg,rgba(245,245,247,.92) 35%,rgba(177,18,38,.12) 70%,transparent),linear-gradient(to top,var(--bg) 0%,transparent 40%)}
+body.is-light .carousel-overlay{background:radial-gradient(800px 350px at 20% 20%,rgba(177,18,38,.12),transparent 55%),linear-gradient(to top,rgba(245,245,247,.55),transparent 50%)}
+body.is-light .carousel-btn{background:rgba(245,245,247,.7);color:rgba(0,0,0,.8);border-color:rgba(0,0,0,.1)}
+body.is-light .category-overlay{background:linear-gradient(to top,rgba(245,245,247,.88) 10%,rgba(177,18,38,.12) 100%)}
+body.is-light .category-card:hover .category-overlay{background:linear-gradient(to top,rgba(245,245,247,.92) 15%,rgba(177,18,38,.22) 100%)}
+body.is-light .card-badge{background:rgba(245,245,247,.7);color:#1a1a1d}
+body.is-light .nav-links.is-open{background:rgba(245,245,247,.95)}
+body.is-light .page-loader{background:var(--bg)}
+body.is-light .site-footer{background:var(--bg-alt)}
+body.is-light .dm-toggle{background:var(--glass);border-color:var(--border)}
+body.is-light .dm-toggle::after{background:var(--red)}
+
 /* ── Reset ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;height:100%;-webkit-text-size-adjust:100%}
-body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .4s var(--ease),color .4s var(--ease)}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%;height:auto}
 button,input,textarea,select{font-family:inherit;font-size:inherit}
