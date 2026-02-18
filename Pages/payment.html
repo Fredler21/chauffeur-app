@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Payment | [Your Brand Name]</title>
+  <meta name="description" content="Confirm your trip details and complete payment securely." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- pages/ needs ../ to reach assets -->
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+
+<body class="theme-guardian">
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="logo-dot" aria-hidden="true"></span>
+        <span class="brand-name">[Your Brand Name]</span>
+      </a>
+
+      <a class="btn btn-ghost" href="book.html">← Back to Booking</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- TITLE -->
+    <section class="section">
+      <div class="container">
+        <h1>Confirm & Pay</h1>
+        <p class="lead">Review your trip details, then pay securely with Stripe.</p>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="section">
+      <div class="container" style="display:grid;grid-template-columns:1.2fr .8fr;gap:16px;">
+        <!-- LEFT: SUMMARY -->
+        <div class="card">
+          <h2 style="margin-top:0;">Trip Summary</h2>
+          <p class="muted" id="missingMsg" style="display:none;">
+            Missing booking details. Please go back and complete your booking.
+          </p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px;">
+            <div>
+              <p class="muted">Driver</p>
+              <strong id="sumDriver">—</strong>
+            </div>
+            <div>
+              <p class="muted">Vehicle</p>
+              <strong id="sumVehicle">—</strong>
+            </div>
+            <div>
+              <p class="muted">Pickup</p>
+              <strong id="sumPickup">—</strong>
+            </div>
+            <div>
+              <p class="muted">Drop-off</p>
+              <strong id="sumDropoff">—</strong>
+            </div>
+            <div>
+              <p class="muted">Date / Time</p>
+              <strong id="sumDateTime">—</strong>
+            </div>
+            <div>
+              <p class="muted">Distance</p>
+              <strong id="sumMiles">—</strong>
+            </div>
+          </div>
+
+          <div class="divider" style="margin:14px 0;"></div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+            <div>
+              <p class="muted" style="margin:0;">Estimated Total</p>
+              <p class="lead" style="margin:6px 0 0;"><strong id="sumTotal">$ —</strong></p>
+              <p class="muted" style="margin-top:6px;font-size:12px;">
+                Final total may change with stops, waiting time, or route updates.
+              </p>
+            </div>
+
+            <div style="text-align:right;">
+              <p class="muted" style="margin:0;">Payment methods</p>
+              <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px;flex-wrap:wrap;">
+                <span class="pill" style="padding:8px 10px;">Debit</span>
+                <span class="pill" style="padding:8px 10px;">Credit</span>
+                <span class="pill" style="padding:8px 10px;">Apple Pay</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider" style="margin:14px 0;"></div>
+
+          <h3 style="margin-top:0;">Route Preview</h3>
+          <div class="card" style="padding:0;overflow:hidden;">
+            <iframe
+              id="mapFrame"
+              title="Route preview"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=[Your%20City/Areas]&output=embed"
+              style="width:100%;height:320px;border:0;">
+            </iframe>
+          </div>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+            <a class="btn btn-ghost" id="openPickup" href="#" target="_blank" rel="noreferrer">Open Pickup</a>
+            <a class="btn btn-ghost" id="openDropoff" href="#" target="_blank" rel="noreferrer">Open Drop-off</a>
+            <a class="btn btn-primary" id="openRoute" href="#" target="_blank" rel="noreferrer">Open Route</a>
+          </div>
+        </div>
+
+        <!-- RIGHT: PAY -->
+        <aside class="card">
+          <h2 style="margin-top:0;">Secure Checkout</h2>
+          <p class="lead">You’ll be redirected to Stripe to complete payment.</p>
+
+          <div class="card" style="margin-top:12px;">
+            <p class="muted" style="margin:0;">Checkout Status</p>
+            <p id="statusText" style="margin:8px 0 0;">Ready to pay</p>
+          </div>
+
+          <div class="divider" style="margin:14px 0;"></div>
+
+          <!-- YOUR STRIPE CHECKOUT LINK (TEST) -->
+          <a id="stripePayBtn" class="btn btn-primary" href="#" style="width:100%;text-align:center;">
+            Pay Now (Stripe)
+          </a>
+
+          <p class="muted" style="margin-top:10px;font-size:12px;">
+            Powered by Stripe. Your card details are not stored on this website.
+          </p>
+
+          <p class="muted" style="margin-top:10px;font-size:12px;">
+            Tip: In test mode, use <strong>4242 4242 4242 4242</strong>.
+          </p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- JS (Payment page only) -->
+  <script src="../assets/js/payment.js"></script>
+</body>
+</html>
+
+<a id="stripePayBtn" class="btn btn-primary" href="#">
+  Pay Now (Stripe)
+</a>
+

@@ -1,0 +1,15 @@
+{
+  "name": "Chauffeur App",
+  "short_name": "Chauffeur",
+  "start_url": "../Pages/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2b6cb0",
+  "icons": [
+    {
+      "src": "images/hero/hero-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

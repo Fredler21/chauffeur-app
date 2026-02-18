@@ -1,0 +1,35 @@
+[
+  {
+    "id": "d1",
+    "name": "Fredler Gracia Pierre-Louis",
+    "role": "Professional Chauffeur",
+    "experience": "3 years Uber • 2 years Lyft",
+    "languages": "Speaks 3 languages",
+    "bio": "Cybersecurity student with a premium service mindset. Calm, discreet, and punctual.",
+    "rating": 4.9,
+    "reviews": 120,
+    "photo": "assets/images/drivers/Driver1.JPG"
+  },
+  {
+    "id": "d2",
+    "name": "Sebastien Jouthe",
+    "role": "Professional Chauffeur",
+    "experience": "2 years Uber • 1 year Lyft",
+    "languages": "HVAC Certified",
+    "bio": "Detail-oriented and professional chauffeur.",
+    "rating": 4.8,
+    "reviews": 86,
+    "photo": "assets/images/drivers/Driver2.JPG"
+  },
+  {
+    "id": "d3",
+    "name": "Nason Valcin",
+    "role": "Professional Chauffeur",
+    "experience": "4 years Uber • 2 years Lyft",
+    "languages": "Premium hospitality focused",
+    "bio": "Experienced chauffeur focused on comfort and safety.",
+    "rating": 4.9,
+    "reviews": 174,
+    "photo": "assets/images/drivers/Driver3.JPG"
+  }
+]

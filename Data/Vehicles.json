@@ -1,0 +1,29 @@
+[
+  {
+    "id": "v1",
+    "name": "Executive Sedan",
+    "passengers": "1–3",
+    "luggage": "2–3",
+    "idealFor": "Business • Airport • Solo",
+    "range": "$ — $$",
+    "image": "assets/images/vehicles/Sedan.JPG"
+  },
+  {
+    "id": "v2",
+    "name": "Luxury SUV",
+    "passengers": "1–6",
+    "luggage": "4–6",
+    "idealFor": "Family • Comfort • Executive",
+    "range": "$$ — $$$",
+    "image": "assets/images/vehicles/SUV.JPG"
+  },
+  {
+    "id": "v3",
+    "name": "Premium Van",
+    "passengers": "1–10",
+    "luggage": "8–12",
+    "idealFor": "Group • Events • Team",
+    "range": "$$$ — $$$$",
+    "image": "assets/images/vehicles/Van.JPG"
+  }
+]

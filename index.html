@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>[Your Brand Name] | Premium Chauffeur</title>
+  <meta name="description" content="Premium private chauffeur service. Reliable. Discreet. Professional." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body class="theme-guardian">
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <header class="header guardian-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Home">
+        <span class="logo-dot" aria-hidden="true"></span>
+        <span class="brand-name">[Your Brand Name]</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#how">How It Works</a>
+      </nav>
+
+      <a class="btn btn-primary btn-guardian" href="pages/book.html">Start Booking</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="container hero-wrap">
+        <div class="hero-copy">
+          <p class="pill pill-guardian">Licensed & Insured • On-time guarantee • Professional chauffeurs</p>
+
+          <h1 class="hero-title">Private Chauffeur Service — Reliable. Discreet. Premium.</h1>
+
+          <p class="subhead">
+            Airport transfers, business rides, events, and hourly bookings.
+            Premium service designed for comfort and privacy.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-guardian" href="pages/book.html">Start Booking</a>
+            <a class="btn btn-ghost" href="#how">How It Works</a>
+          </div>
+        </div>
+
+        <!-- CAROUSEL -->
+        <div class="carousel guardian-carousel" aria-label="Luxury car gallery">
+          <div class="carousel-frame">
+            <div class="carousel-track" data-carousel-track>
+              <figure class="slide is-active" data-slide="0">
+                <img src="assets/images/hero/car1.jpg" alt="Luxury chauffeur vehicle exterior" />
+              </figure>
+
+              <figure class="slide" data-slide="1">
+                <img src="assets/images/hero/car2.jpg" alt="Premium black car service vehicle" />
+              </figure>
+
+              <figure class="slide" data-slide="2">
+                <img src="assets/images/hero/car3.jpg" alt="Executive chauffeured vehicle at night" />
+              </figure>
+            </div>
+
+            <!-- Arrows ON the image -->
+            <button class="carousel-btn prev" type="button" aria-label="Previous image" data-carousel-prev>‹</button>
+            <button class="carousel-btn next" type="button" aria-label="Next image" data-carousel-next>›</button>
+
+            <!-- Overlay (styled in CSS for red/grey) -->
+            <div class="carousel-overlay guardian-overlay" aria-hidden="true"></div>
+          </div>
+
+          <!-- Dots -->
+          <div class="carousel-dots" role="tablist" aria-label="Choose image">
+            <button class="dot is-active" type="button" aria-label="Slide 1" data-dot="0"></button>
+            <button class="dot" type="button" aria-label="Slide 2" data-dot="1"></button>
+            <button class="dot" type="button" aria-label="Slide 3" data-dot="2"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-head">
+          <h2>How It Works</h2>
+          <p class="lead">A clean booking flow with route preview before payment.</p>
+        </div>
+
+        <div class="how-grid">
+          <article class="how-card">
+            <div class="how-top">
+              <span class="how-step">01</span>
+              <span class="how-icon" aria-hidden="true">👤</span>
+            </div>
+            <h3>Choose your driver</h3>
+            <p>Select a professional chauffeur first.</p>
+          </article>
+
+          <article class="how-card">
+            <div class="how-top">
+              <span class="how-step">02</span>
+              <span class="how-icon" aria-hidden="true">🚘</span>
+            </div>
+            <h3>Choose your vehicle</h3>
+            <p>Pick the best ride for your trip.</p>
+          </article>
+
+          <article class="how-card">
+            <div class="how-top">
+              <span class="how-step">03</span>
+              <span class="how-icon" aria-hidden="true">🗺️</span>
+            </div>
+            <h3>Preview route & estimate</h3>
+            <p>See route distance before payment.</p>
+          </article>
+
+          <article class="how-card">
+            <div class="how-top">
+              <span class="how-step">04</span>
+              <span class="how-icon" aria-hidden="true">✅</span>
+            </div>
+            <h3>Pay & receive confirmation</h3>
+            <p>Complete payment and get confirmation.</p>
+          </article>
+        </div>
+
+        <div class="cta-strip">
+          <div>
+            <p class="cta-title">Ready to book a premium ride?</p>
+            <p class="cta-sub">Start your booking in under 60 seconds.</p>
+          </div>
+          <a class="btn btn-primary btn-guardian" href="pages/book.html">Start Booking</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/script.js"></script>
+  <script src="assets/js/carousel.js"></script>
+</body>
+</html>

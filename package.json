@@ -1,0 +1,12 @@
+{
+  "name": "chauffeur-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "npx http-server Pages -p 8080",
+    "serve-py": "python -m http.server --directory Pages 8080"
+  },
+  "description": "Static web frontend for Chauffeur App",
+  "author": "",
+  "license": "MIT"
+}

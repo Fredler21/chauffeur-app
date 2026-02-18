@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Ride | [Your Brand Name]</title>
+  <meta name="description" content="Book a premium private chauffeur ride." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- pages/ needs ../ to reach assets -->
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+
+<body class="theme-guardian">
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="logo-dot" aria-hidden="true"></span>
+        <span class="brand-name">[Your Brand Name]</span>
+      </a>
+
+      <a class="btn btn-ghost" href="../index.html">← Back to Home</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- TITLE -->
+    <section class="section">
+      <div class="container">
+        <h1>Book Your Chauffeur</h1>
+        <p class="lead">Step 1: Choose driver → Step 2: Choose vehicle → Step 3: Enter pickup/drop-off → Step 4: Continue to payment.</p>
+      </div>
+    </section>
+
+    <!-- STEP BAR -->
+    <section class="section">
+      <div class="container steps">
+        <div class="step is-active">1. Driver</div>
+        <div class="step" id="stepVehicle">2. Vehicle</div>
+        <div class="step" id="stepTrip">3. Trip</div>
+        <div class="step">4. Confirm</div>
+      </div>
+    </section>
+
+    <!-- DRIVERS -->
+    <section class="section" id="drivers">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Choose Your Driver</h2>
+            <p class="lead">Tap a driver to select. Vehicle selection unlocks after.</p>
+          </div>
+          <div class="hint" id="driverHint">Required: Select 1 driver</div>
+        </div>
+
+        <div class="grid-3">
+          <article class="card driver-card" data-driver-id="fredler" data-driver-name="Fredler Gracia Pierre-Louis" tabindex="0" role="button" aria-label="Select Fredler">
+            <div class="card-badge available">Available</div>
+            <img src="../assets/images/drivers/driver1.jpg" alt="Fredler Gracia Pierre-Louis" />
+            <h3>Fredler Gracia Pierre-Louis</h3>
+            <p class="driver-meta">3 yrs Uber • 2 yrs Lyft • 3 languages</p>
+            <p class="driver-desc">
+              Cybersecurity student with strong safety awareness and premium service mindset.
+            </p>
+            <div class="card-actions">
+              <button class="btn btn-primary btn-sm" type="button">Select Driver</button>
+            </div>
+          </article>
+
+          <article class="card driver-card" data-driver-id="sebastien" data-driver-name="Sebastien Jouthe" tabindex="0" role="button" aria-label="Select Sebastien">
+            <div class="card-badge available">Available</div>
+            <img src="../assets/images/drivers/driver2.jpg" alt="Sebastien Jouthe" />
+            <h3>Sebastien Jouthe</h3>
+            <p class="driver-meta">2 yrs Uber • 1 yr Lyft • HVAC certified</p>
+            <p class="driver-desc">
+              Reliable chauffeur known for punctual pickups and smooth, comfortable rides.
+            </p>
+            <div class="card-actions">
+              <button class="btn btn-primary btn-sm" type="button">Select Driver</button>
+            </div>
+          </article>
+
+          <article class="card driver-card" data-driver-id="nason" data-driver-name="Nason Valcin" tabindex="0" role="button" aria-label="Select Nason">
+            <div class="card-badge available">Available</div>
+            <img src="../assets/images/drivers/driver3.jpg" alt="Nason Valcin" />
+            <h3>Nason Valcin</h3>
+            <p class="driver-meta">4 yrs Uber • 2 yrs Lyft</p>
+            <p class="driver-desc">
+              Experienced professional with strong route knowledge and customer-first service.
+            </p>
+            <div class="card-actions">
+              <button class="btn btn-primary btn-sm" type="button">Select Driver</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- VEHICLES -->
+    <section class="section" id="vehicles">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Choose Your Vehicle</h2>
+            <p class="lead">Vehicle selection is locked until a driver is selected.</p>
+          </div>
+          <div class="hint" id="vehicleHint">Locked: Select a driver first</div>
+        </div>
+
+        <div class="grid-3">
+          <article class="card vehicle-card" data-vehicle-id="sedan" data-vehicle-name="Executive Sedan" tabindex="0" role="button" aria-label="Select Executive Sedan">
+            <div class="card-badge available">Available</div>
+            <img src="../assets/images/vehicles/sedan.jpg" alt="Executive Sedan" />
+            <h3>Executive Sedan</h3>
+            <p class="vehicle-meta">Up to 3 passengers • 2 luggage</p>
+            <p class="vehicle-desc">Ideal for airport transfers and business travel.</p>
+            <div class="card-actions">
+              <button class="btn btn-primary btn-sm" type="button">Select Vehicle</button>
+            </div>
+          </article>
+
+          <article class="card vehicle-card" data-vehicle-id="suv" data-vehicle-name="Luxury SUV" tabindex="0" role="button" aria-label="Select Luxury SUV">
+            <div class="card-badge available">Available</div>
+            <img src="../assets/images/vehicles/suv.jpg" alt="Luxury SUV" />
+            <h3>Luxury SUV</h3>
+            <p class="vehicle-meta">Up to 6 passengers • 5 luggage</p>
+            <p class="vehicle-desc">Extra comfort and space for premium rides.</p>
+            <div class="card-actions">
+              <button class="btn btn-primary btn-sm" type="button">Select Vehicle</button>
+            </div>
+          </article>
+
+          <article class="card vehicle-card" data-vehicle-id="van" data-vehicle-name="Premium Van" tabindex="0" role="button" aria-label="Select Premium Van">
+            <div class="card-badge available">Available</div>
+            <img src="../assets/images/vehicles/van.jpg" alt="Premium Van" />
+            <h3>Premium Van</h3>
+            <p class="vehicle-meta">Up to 10 passengers • 10 luggage</p>
+            <p class="vehicle-desc">Best for group transportation and events.</p>
+            <div class="card-actions">
+              <button class="btn btn-primary btn-sm" type="button">Select Vehicle</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRIP DETAILS -->
+    <section class="section" id="trip">
+      <div class="container">
+        <h2>Trip Details</h2>
+        <p class="lead">Enter pickup + drop-off. We calculate miles automatically, then show your estimate.</p>
+
+        <form class="card booking-form" id="bookingForm" novalidate>
+          <label>
+            Pickup Location <span class="req">*</span>
+            <input id="pickup" type="text" placeholder="Enter pickup address" required />
+          </label>
+
+          <label>
+            Drop-off Location <span class="req">*</span>
+            <input id="dropoff" type="text" placeholder="Enter destination address" required />
+          </label>
+
+          <div class="form-row">
+            <label>
+              Date <span class="req">*</span>
+              <input id="tripDate" type="date" required />
+            </label>
+
+            <label>
+              Time <span class="req">*</span>
+              <input id="tripTime" type="time" required />
+            </label>
+          </div>
+
+          <label>
+            Special Requests
+            <textarea id="requests" rows="4" placeholder="Flight number, child seat, stops, etc."></textarea>
+          </label>
+        </form>
+
+        <!-- ESTIMATE -->
+        <div class="card" style="margin-top:16px;">
+          <h3 style="margin-top:0;">Trip Estimate</h3>
+          <p class="lead" style="margin-top:6px;">Rate: <strong>$5 / mile</strong> • Minimum: <strong>$75</strong></p>
+
+          <div style="display:flex;gap:22px;flex-wrap:wrap;margin-top:12px;">
+            <div>
+              <p class="muted">Selected Driver</p>
+              <strong id="selectedDriverText">None</strong>
+            </div>
+
+            <div>
+              <p class="muted">Selected Vehicle</p>
+              <strong id="selectedVehicleText">None</strong>
+            </div>
+
+            <div>
+              <p class="muted">Distance</p>
+              <strong id="milesText">—</strong>
+            </div>
+
+            <div>
+              <p class="muted">Estimated Total</p>
+              <strong id="totalText">$ —</strong>
+            </div>
+          </div>
+
+          <p id="calcMsg" class="muted" style="margin-top:12px;"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAP PREVIEW -->
+    <section class="section" id="map">
+      <div class="container">
+        <h2>Route Preview</h2>
+        <p class="lead">This preview updates after pickup + drop-off.</p>
+
+        <div class="card">
+          <iframe
+            id="mapFrame"
+            title="Map preview"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=[Your%20City/Areas]&output=embed"
+            style="width:100%;height:320px;border:0;">
+          </iframe>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+            <a class="btn btn-ghost" id="openPickup" href="#" target="_blank" rel="noreferrer">Open Pickup</a>
+            <a class="btn btn-ghost" id="openDropoff" href="#" target="_blank" rel="noreferrer">Open Drop-off</a>
+            <a class="btn btn-primary" id="openRoute" href="#" target="_blank" rel="noreferrer">Open Route</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+      <div class="container cta-strip">
+        <div>
+          <p class="cta-title">Continue to payment</p>
+          <p class="cta-sub">Button unlocks after you select driver + vehicle and miles are calculated.</p>
+        </div>
+
+        <button id="continueBookingBtn" class="btn btn-primary" disabled>
+          Continue Booking
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- JS -->
+  <script src="../assets/js/script.js"></script>
+</body>
+</html>
