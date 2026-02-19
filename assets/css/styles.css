@@ -353,10 +353,18 @@ body.is-light .dash-hero-overlay{background:linear-gradient(to bottom,rgba(245,2
   .btn:active{box-shadow:0 0 20px var(--red-glow-sm)}
   .btn-sm{min-height:auto;width:auto}
   .nav-right .btn{width:auto;min-height:auto}
-  /* driver cards swipeable */
-  .grid-3.driver-grid-mobile{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:8px;-webkit-overflow-scrolling:touch}
-  .grid-3.driver-grid-mobile .driver-card{min-width:280px;flex-shrink:0;scroll-snap-align:start}
+  /* driver cards swipeable with arrows */
+  .driver-scroll-wrap{position:relative}
+  .grid-3.driver-grid-mobile{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:8px;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
+  .grid-3.driver-grid-mobile .driver-card{min-width:85%;flex-shrink:0;scroll-snap-align:center}
   .grid-3.driver-grid-mobile::-webkit-scrollbar{display:none}
+  .driver-scroll-btn{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(11,11,13,.7);color:#fff;font-size:20px;display:grid;place-items:center;cursor:pointer;z-index:10;backdrop-filter:blur(8px);transition:all .2s ease}
+  .driver-scroll-btn:hover{background:rgba(177,18,38,.5);border-color:rgba(177,18,38,.4)}
+  .driver-scroll-btn.prev{left:-6px}
+  .driver-scroll-btn.next{right:-6px}
+  .driver-scroll-dots{display:flex;justify-content:center;gap:6px;margin-top:10px}
+  .driver-scroll-dots .d-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.1);transition:all .2s}
+  .driver-scroll-dots .d-dot.is-active{background:var(--red);border-color:var(--red);box-shadow:0 0 8px var(--red-glow-sm)}
 }
 @media(max-width:480px){
   .section{padding:28px 0}

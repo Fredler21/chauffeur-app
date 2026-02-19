@@ -63,6 +63,9 @@
           <div class="hint" id="driverHint">Select 1 driver</div>
         </div>
 
+        <div class="driver-scroll-wrap" id="driverScrollWrap">
+        <button class="driver-scroll-btn prev" id="driverPrev" type="button" aria-label="Previous driver">&#8249;</button>
+        <button class="driver-scroll-btn next" id="driverNext" type="button" aria-label="Next driver">&#8250;</button>
         <div class="grid-3" id="driverGrid">
           <article class="card driver-card" data-driver-id="fredler" data-driver-name="Fredler Gracia Pierre-Louis" tabindex="0" role="button">
             <div class="card-badge available">Available</div>
@@ -90,6 +93,12 @@
             <p class="driver-desc">Experienced professional with strong route knowledge and customer-first service.</p>
             <div class="card-actions"><button class="btn btn-primary btn-sm" type="button">Select</button></div>
           </article>
+        </div>
+        <div class="driver-scroll-dots" id="driverDots">
+          <span class="d-dot is-active" data-idx="0"></span>
+          <span class="d-dot" data-idx="1"></span>
+          <span class="d-dot" data-idx="2"></span>
+        </div>
         </div>
       </div>
     </section>

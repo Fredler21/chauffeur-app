@@ -40,9 +40,51 @@
 
   const progressSteps = document.querySelectorAll('.progress-step');
 
-  /* ── Mobile: make driver grid swipeable ── */
+  /* ── Mobile: make driver grid swipeable with arrows ── */
+  const driverScrollWrap = document.getElementById('driverScrollWrap');
+  const driverPrev = document.getElementById('driverPrev');
+  const driverNext = document.getElementById('driverNext');
+  const driverDots = document.querySelectorAll('#driverDots .d-dot');
+
   if (window.innerWidth <= 768 && driverGrid) {
     driverGrid.classList.add('driver-grid-mobile');
+
+    let driverIdx = 0;
+    const totalDrivers = driverCards.length;
+
+    function scrollToDriver(idx) {
+      if (idx < 0) idx = 0;
+      if (idx >= totalDrivers) idx = totalDrivers - 1;
+      driverIdx = idx;
+      const card = driverCards[idx];
+      if (card) card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      driverDots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+    }
+
+    driverPrev?.addEventListener('click', () => scrollToDriver(driverIdx - 1));
+    driverNext?.addEventListener('click', () => scrollToDriver(driverIdx + 1));
+    driverDots.forEach(dot => dot.addEventListener('click', () => scrollToDriver(Number(dot.dataset.idx))));
+
+    // sync dots on manual swipe
+    let scrollTimer = null;
+    driverGrid.addEventListener('scroll', () => {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        const gridLeft = driverGrid.scrollLeft;
+        const cardWidth = driverCards[0]?.offsetWidth || 280;
+        const nearest = Math.round(gridLeft / (cardWidth + 12));
+        if (nearest !== driverIdx && nearest >= 0 && nearest < totalDrivers) {
+          driverIdx = nearest;
+          driverDots.forEach((d, i) => d.classList.toggle('is-active', i === driverIdx));
+        }
+      }, 80);
+    });
+  } else {
+    // hide arrows & dots on desktop
+    if (driverPrev) driverPrev.style.display = 'none';
+    if (driverNext) driverNext.style.display = 'none';
+    const dotsWrap = document.getElementById('driverDots');
+    if (dotsWrap) dotsWrap.style.display = 'none';
   }
 
   /* ── Helpers ── */
