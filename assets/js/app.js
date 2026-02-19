@@ -59,4 +59,16 @@
     setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateX(30px)'; setTimeout(() => t.remove(), 300); }, duration);
   };
 
+  /* ── Hero Background Slideshow (crossfade 5 images) ── */
+  const heroSlides = document.querySelectorAll('.hero-slide');
+  if (heroSlides.length > 1) {
+    let current = 0;
+    const total = heroSlides.length;
+    setInterval(() => {
+      heroSlides[current].classList.remove('is-active');
+      current = (current + 1) % total;
+      heroSlides[current].classList.add('is-active');
+    }, 5000); // switch every 5 seconds
+  }
+
 })();

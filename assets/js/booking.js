@@ -91,9 +91,14 @@
     if (!vehicleSection) return;
     vehicleSection.classList.add('is-unlocked');
     if (vehicleHint) vehicleHint.textContent = 'Select 1 vehicle';
-    // smooth scroll to vehicle section
+    // On mobile: instantly jump to vehicle section (no scroll animation for snappy feel)
+    // On desktop: smooth scroll
     setTimeout(() => {
-      vehicleSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (window.innerWidth <= 768) {
+        vehicleSection.scrollIntoView({ behavior: 'instant', block: 'start' });
+      } else {
+        vehicleSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }, 150);
   }
 

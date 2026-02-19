@@ -53,50 +53,27 @@
   </nav>
 
   <main>
-    <!-- ═══ HERO — single background image only ═══ -->
+    <!-- ═══ HERO — 5-image background slideshow ═══ -->
     <section class="hero" id="top">
-      <div class="hero-bg">
-        <img src="assets/images/hero/premium-hero.jpg" alt="Luxury black sedan, cinematic night city lights" id="heroBgImg">
+      <div class="hero-slideshow" aria-hidden="true">
+        <img class="hero-slide is-active" src="assets/images/hero/premium-hero.jpg" alt="">
+        <img class="hero-slide" src="assets/images/hero/slide1.jpg" alt="">
+        <img class="hero-slide" src="assets/images/hero/slide2.jpg" alt="">
+        <img class="hero-slide" src="assets/images/hero/slide3.jpg" alt="">
+        <img class="hero-slide" src="assets/images/hero/slide4.jpg" alt="">
       </div>
       <div class="hero-overlay"></div>
       <div class="container">
-        <div class="hero-grid">
-          <div class="hero-content">
-            <p class="pill">Licensed &amp; Insured · On-time guarantee</p>
-            <h1>Private Chauffeur.<br>Elevated Experience.</h1>
-            <p class="subhead">
-              Reliable. Discreet. Premium.<br>
-              Airport transfers, business rides, events, and hourly bookings.
-            </p>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="Pages/book.html">Start Booking</a>
-              <a class="btn btn-ghost" href="#fleet">View Fleet</a>
-            </div>
-          </div>
-
-          <!-- CAROUSEL — 3 slides, no duplicate car images elsewhere -->
-          <div class="carousel" aria-label="Luxury car gallery">
-            <div class="carousel-frame">
-              <div class="carousel-track" data-carousel-track>
-                <figure class="slide" data-slide="0">
-                  <img src="assets/images/hero/car1.jpg" alt="Luxury sedan exterior">
-                </figure>
-                <figure class="slide" data-slide="1">
-                  <img src="assets/images/hero/car2.jpg" alt="Premium black car">
-                </figure>
-                <figure class="slide" data-slide="2">
-                  <img src="assets/images/hero/car3.jpg" alt="Executive vehicle">
-                </figure>
-              </div>
-              <button class="carousel-btn prev" type="button" aria-label="Previous" data-carousel-prev>&#8249;</button>
-              <button class="carousel-btn next" type="button" aria-label="Next" data-carousel-next>&#8250;</button>
-              <div class="carousel-overlay" aria-hidden="true"></div>
-            </div>
-            <div class="carousel-dots" role="tablist" aria-label="Choose image">
-              <button class="dot is-active" type="button" aria-label="Slide 1" data-dot="0"></button>
-              <button class="dot" type="button" aria-label="Slide 2" data-dot="1"></button>
-              <button class="dot" type="button" aria-label="Slide 3" data-dot="2"></button>
-            </div>
+        <div class="hero-content hero-content-center">
+          <p class="pill">Licensed &amp; Insured · On-time guarantee</p>
+          <h1>Private Chauffeur.<br>Elevated Experience.</h1>
+          <p class="subhead">
+            Reliable. Discreet. Premium.<br>
+            Airport transfers, business rides, events, and hourly bookings.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="Pages/book.html">Start Booking</a>
+            <a class="btn btn-ghost" href="#fleet">View Fleet</a>
           </div>
         </div>
       </div>

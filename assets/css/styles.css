@@ -38,7 +38,7 @@ body.is-light {
 }
 body.is-light .bg-glow{opacity:.25}
 body.is-light .navbar{background:rgba(245,245,247,.90)}
-body.is-light .hero-overlay{background:linear-gradient(160deg,rgba(245,245,247,.92) 40%,rgba(177,18,38,.08) 70%,transparent),linear-gradient(to top,var(--bg) 0%,transparent 35%)}
+body.is-light .hero-overlay{background:linear-gradient(160deg,rgba(245,245,247,.88) 35%,rgba(177,18,38,.08) 70%,transparent),linear-gradient(to top,var(--bg) 0%,transparent 40%)}
 body.is-light .carousel-overlay{background:linear-gradient(to top,rgba(245,245,247,.5),transparent 50%)}
 body.is-light .carousel-btn{background:rgba(245,245,247,.7);color:rgba(0,0,0,.75);border-color:rgba(0,0,0,.08)}
 body.is-light .category-overlay{background:linear-gradient(to top,rgba(255,255,255,.88) 10%,rgba(0,0,0,.05) 100%)}
@@ -127,12 +127,15 @@ small,.small-text{font-size:clamp(11px,2.5vw,13px)}
 
 /* ═══════════════ HERO ═══════════════ */
 .hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden;background:var(--bg)}
-.hero-bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;background-repeat:no-repeat}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
-.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(160deg,rgba(11,11,13,.93) 40%,rgba(177,18,38,.12) 70%,transparent),linear-gradient(to top,var(--bg) 0%,transparent 35%)}
+/* ── background slideshow ── */
+.hero-slideshow{position:absolute;inset:0;z-index:0}
+.hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:0;transition:opacity 1.8s ease-in-out}
+.hero-slide.is-active{opacity:1}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(160deg,rgba(11,11,13,.88) 35%,rgba(177,18,38,.14) 70%,transparent),linear-gradient(to top,var(--bg) 0%,transparent 40%)}
 .hero .container{position:relative;z-index:2}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
-.hero-content{max-width:580px}
+.hero-content{max-width:640px}
+.hero-content-center{margin:0 auto;text-align:center}
+.hero-content-center .hero-actions{justify-content:center}
 .hero-content .pill{margin-bottom:16px}
 .hero-content h1{margin-bottom:12px}
 .hero-content .subhead{color:var(--text-dim);font-size:clamp(13px,3vw,16px);line-height:1.5;margin-bottom:24px}
@@ -321,7 +324,7 @@ body.is-light .dash-hero-overlay{background:linear-gradient(to bottom,rgba(245,2
 
 /* ═══════════════ RESPONSIVE ═══════════════ */
 @media(max-width:1024px){
-  .hero-grid{grid-template-columns:1fr}
+  .hero-content-center{text-align:center}
   .fleet-grid,.trust-grid{grid-template-columns:repeat(2,1fr)}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .footer-grid{grid-template-columns:repeat(2,1fr)}
@@ -361,6 +364,7 @@ body.is-light .dash-hero-overlay{background:linear-gradient(to bottom,rgba(245,2
   .stats-grid{grid-template-columns:1fr}
   .hero-actions{flex-direction:column}
   .hero-actions .btn{width:100%}
+  .hero-content-center .hero-actions{align-items:center}
   .card{padding:16px}
   .driver-card img,.vehicle-card img{height:140px}
 }
