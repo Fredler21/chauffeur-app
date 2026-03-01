@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title>Chauffeur App | Premium Private Chauffeur</title>
   <meta name="description" content="Premium private chauffeur service. Reliable. Discreet. Professional.">
+  <meta name="theme-color" content="#0B0B0D">
 
   <script type="application/ld+json">
   {
@@ -19,7 +20,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="manifest" href="assets/manifest.json">
 </head>
@@ -39,8 +40,8 @@
         <a href="index.html" class="active">Home</a>
         <a href="Pages/dashboard.html">Dashboard</a>
         <a href="Pages/book.html">Book a Ride</a>
-        <a href="#why">Why Us</a>
         <a href="#fleet">Fleet</a>
+        <a href="#why">Why Us</a>
       </div>
       <div class="nav-right">
         <button class="dm-toggle" id="dmToggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
@@ -53,33 +54,204 @@
   </nav>
 
   <main>
-    <!-- ═══ HERO — 5-image background slideshow ═══ -->
+    <!-- ═══ HERO — Large rounded card with luxury image ═══ -->
     <section class="hero" id="top">
-      <div class="hero-slideshow" aria-hidden="true">
-        <img class="hero-slide is-active" src="assets/images/hero/premium-hero.jpg" alt="">
-        <img class="hero-slide" src="assets/images/hero/slide1.jpg" alt="">
-        <img class="hero-slide" src="assets/images/hero/slide2.jpg" alt="">
-        <img class="hero-slide" src="assets/images/hero/slide3.jpg" alt="">
-        <img class="hero-slide" src="assets/images/hero/slide4.jpg" alt="">
-      </div>
-      <div class="hero-overlay"></div>
       <div class="container">
-        <div class="hero-content hero-content-center">
-          <p class="pill">Licensed &amp; Insured · On-time guarantee</p>
-          <h1>Private Chauffeur.<br>Elevated Experience.</h1>
-          <p class="subhead">
-            Reliable. Discreet. Premium.<br>
-            Airport transfers, business rides, events, and hourly bookings.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="Pages/book.html">Start Booking</a>
-            <a class="btn btn-ghost" href="#fleet">View Fleet</a>
+        <div class="hero-card">
+          <img class="hero-card-img" src="assets/images/hero/premium-hero.jpg" alt="Luxury chauffeur vehicle">
+          <div class="hero-card-overlay"></div>
+          <div class="hero-card-content">
+            <p class="pill">Licensed &amp; Insured · On-time guarantee</p>
+            <h1>Private Chauffeur.<br>Elevated Experience.</h1>
+            <p class="subhead">
+              Reliable. Discreet. Premium.<br>
+              Airport transfers, business rides, events &amp; hourly bookings.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary btn-lg" href="Pages/book.html">Start Booking</a>
+              <a class="btn btn-ghost" href="#fleet">View Fleet</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══ FLEET — one clean section, proper cards ═══ -->
+    <!-- ═══ HOW IT WORKS — Compact dashboard strip ═══ -->
+    <section class="section reveal" style="padding-top:24px;padding-bottom:0">
+      <div class="container">
+        <div class="how-strip">
+          <div class="how-strip-step">
+            <span class="step-dot">1</span> Choose Driver
+          </div>
+          <div class="how-strip-step">
+            <span class="step-dot">2</span> Select Vehicle
+          </div>
+          <div class="how-strip-step">
+            <span class="step-dot">3</span> Enter Route
+          </div>
+          <div class="how-strip-step">
+            <span class="step-dot">4</span> Confirm &amp; Pay
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SOCIAL PROOF — Stats strip ═══ -->
+    <section class="section reveal" style="padding-top:28px;padding-bottom:0">
+      <div class="container">
+        <div class="proof-strip">
+          <div class="proof-stat">
+            <span class="stat-number" data-count="372" data-suffix="+">0+</span>
+            <span class="stat-label-text">Rides Completed</span>
+          </div>
+          <div class="proof-divider"></div>
+          <div class="proof-stat">
+            <span class="stat-number" data-count="5" data-suffix=".0">0.0</span>
+            <span class="stat-label-text">Average Rating</span>
+          </div>
+          <div class="proof-divider"></div>
+          <div class="proof-stat">
+            <span class="stat-number" data-count="100" data-suffix="%">0%</span>
+            <span class="stat-label-text">On-Time Guarantee</span>
+          </div>
+          <div class="proof-divider"></div>
+          <div class="proof-stat">
+            <span class="stat-number" data-count="3" data-suffix="">0</span>
+            <span class="stat-label-text">Elite Chauffeurs</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ DRIVERS — Premium Showcase ═══ -->
+    <section class="section driver-showcase-section reveal" id="drivers">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Our Chauffeurs</p>
+          <h2>Meet the Professionals</h2>
+          <p class="lead">Hand-selected. Background-checked. Committed to excellence.</p>
+        </div>
+
+        <div class="driver-showcase-grid">
+
+          <!-- ── FREDLER ── -->
+          <article class="driver-showcase-card" data-driver="fredler" role="button" tabindex="0">
+            <div class="dsc-photo-wrap">
+              <img class="dsc-photo" src="assets/images/drivers/driver1.jpg" alt="Fredler Gracia Pierre-Louis">
+              <div class="dsc-photo-gradient"></div>
+              <span class="dsc-avail">Available</span>
+              <div class="dsc-rating-badge">
+                <span class="dsc-stars">★★★★★</span>
+                <span class="dsc-score">5.0</span>
+              </div>
+            </div>
+            <div class="dsc-body">
+              <h3 class="dsc-name">Fredler G. Pierre-Louis <span class="dsc-nick">(Freddy)</span></h3>
+              <p class="dsc-title">Most Experienced Chauffeur · 3 Languages</p>
+              <div class="dsc-rides-badge">
+                <span class="dsc-rides-number" data-count="150">0</span>
+                <span class="dsc-rides-label">Rides Completed</span>
+              </div>
+              <p class="dsc-bio">7+ years of professional driving experience and the most seasoned chauffeur on the team. Fredler speaks three languages and is known for delivering a flawless, first-class experience every single ride.</p>
+              <div class="dsc-why">
+                <span class="dsc-why-label">Why I Drive</span>
+                <p>"I believe every person deserves to feel important. When someone gets in my car, they're not just a passenger — they're my guest."</p>
+              </div>
+            </div>
+            <div class="dsc-review-footer">
+              <div class="dsc-review-quote">"Fredler is in a league of his own. Impeccable timing, immaculate vehicle, and a level of professionalism I've never experienced with any other service. He made a stressful travel day feel effortless."</div>
+              <div class="dsc-review-author">— Marcus T., Boca Raton</div>
+              <div class="dsc-review-count">150 verified reviews</div>
+            </div>
+            <div class="dsc-tap-hint">Tap to view full profile</div>
+          </article>
+
+          <!-- ── SEBASTIEN ── -->
+          <article class="driver-showcase-card" data-driver="sebastien" role="button" tabindex="0">
+            <div class="dsc-photo-wrap">
+              <img class="dsc-photo" src="assets/images/drivers/driver2.jpg" alt="Sebastien Jouthe">
+              <div class="dsc-photo-gradient"></div>
+              <span class="dsc-location-badge">Massachusetts Only</span>
+              <div class="dsc-rating-badge">
+                <span class="dsc-stars">★★★★★</span>
+                <span class="dsc-score">5.0</span>
+              </div>
+            </div>
+            <div class="dsc-body">
+              <h3 class="dsc-name">Sebastien Jouthe <span class="dsc-nick">(Babas)</span></h3>
+              <p class="dsc-title">Senior Chauffeur · HVAC Certified</p>
+              <p class="dsc-area"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Massachusetts</p>
+              <div class="dsc-rides-badge">
+                <span class="dsc-rides-number" data-count="123">0</span>
+                <span class="dsc-rides-label">Rides Completed</span>
+              </div>
+              <p class="dsc-bio">Meticulous attention to detail with a calm, professional demeanor. Serving the greater Boston area — Sebastien handles everything so you don't have to.</p>
+              <div class="dsc-why">
+                <span class="dsc-why-label">Why I Drive</span>
+                <p>"Driving isn't about A to B — it's about creating a moment of peace. I want my clients to sit back and know everything is handled."</p>
+              </div>
+            </div>
+            <div class="dsc-review-footer">
+              <div class="dsc-review-quote">"Sebastien turned a simple ride into a premium experience. He had the car at the perfect temperature, opened every door, and handled our luggage with care. Truly five-star service."</div>
+              <div class="dsc-review-author">— Camille &amp; David R., Randolph, MA</div>
+              <div class="dsc-review-count">123 verified reviews</div>
+            </div>
+            <div class="dsc-tap-hint">Tap to view full profile</div>
+          </article>
+
+          <!-- ── NASON ── -->
+          <article class="driver-showcase-card" data-driver="nason" role="button" tabindex="0">
+            <div class="dsc-photo-wrap">
+              <img class="dsc-photo" src="assets/images/drivers/driver3.jpg" alt="Nason Valcin">
+              <div class="dsc-photo-gradient"></div>
+              <span class="dsc-avail">Available</span>
+              <div class="dsc-rating-badge">
+                <span class="dsc-stars">★★★★★</span>
+                <span class="dsc-score">5.0</span>
+              </div>
+            </div>
+            <div class="dsc-body">
+              <h3 class="dsc-name">Nason Valcin <span class="dsc-nick">(Napo)</span></h3>
+              <p class="dsc-title">Elite Chauffeur · 4+ Years</p>
+              <div class="dsc-rides-badge">
+                <span class="dsc-rides-number" data-count="99">0</span>
+                <span class="dsc-rides-label">Rides Completed</span>
+              </div>
+              <p class="dsc-bio">A rising star with razor-sharp punctuality and a natural gift for hospitality. Clients regularly request Nason by name for his smooth driving style and warm professionalism.</p>
+              <div class="dsc-why">
+                <span class="dsc-why-label">Why I Drive</span>
+                <p>"There's nothing more rewarding than earning someone's trust. My clients rely on me — no excuses, no delays. That keeps me sharp."</p>
+              </div>
+            </div>
+            <div class="dsc-review-footer">
+              <div class="dsc-review-quote">"Nason is the definition of dependable. Eight business trips and counting — always early, always professional, always a step ahead. I won't ride with anyone else."</div>
+              <div class="dsc-review-author">— Jonathan H., Coral Springs</div>
+              <div class="dsc-review-count">99 verified reviews</div>
+            </div>
+            <div class="dsc-tap-hint">Tap to view full profile</div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CTA — Premium booking call-to-action ═══ -->
+    <section class="section reveal" id="homeCta">
+      <div class="container">
+        <div class="cta-premium">
+          <div class="cta-premium-inner">
+            <h2 class="cta-premium-title">Ready for a Premium Ride?</h2>
+            <p class="cta-premium-sub">Choose your driver, select your vehicle, and book — all in under 60 seconds.</p>
+            <a class="btn btn-primary btn-lg cta-premium-btn" href="Pages/book.html">
+              Continue Booking
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FLEET ═══ -->
     <section class="section reveal" id="fleet">
       <div class="container">
         <div class="section-head">
@@ -126,80 +298,32 @@
           <div class="trust-card">
             <div class="trust-icon">🛡️</div>
             <h3>Licensed &amp; Insured</h3>
-            <p>Every ride is fully covered. Background-checked drivers with commercial insurance on all vehicles.</p>
+            <p>Every ride fully covered. Background-checked drivers with commercial insurance.</p>
           </div>
           <div class="trust-card">
             <div class="trust-icon">⏱️</div>
             <h3>Always On Time</h3>
-            <p>Flight tracking, real-time ETAs, and a guaranteed punctuality promise — or your next ride is on us.</p>
+            <p>Flight tracking, real-time ETAs, and a punctuality guarantee.</p>
           </div>
           <div class="trust-card">
             <div class="trust-icon">🔒</div>
             <h3>Privacy First</h3>
-            <p>No ride sharing. No data selling. Discreet, confidential service for executives and private clients.</p>
+            <p>No ride sharing. No data selling. Discreet, confidential service.</p>
           </div>
           <div class="trust-card">
             <div class="trust-icon">💎</div>
             <h3>Premium Fleet</h3>
-            <p>Late-model luxury sedans, SUVs, and vans — maintained to the highest standard, every trip.</p>
+            <p>Late-model luxury sedans, SUVs, and vans — maintained to perfection.</p>
           </div>
           <div class="trust-card">
             <div class="trust-icon">📱</div>
             <h3>Book in 60 Seconds</h3>
-            <p>Choose your driver, pick a vehicle, enter your route — done. Live pricing, no hidden fees.</p>
+            <p>Choose your driver, pick a vehicle, enter your route — done.</p>
           </div>
           <div class="trust-card">
             <div class="trust-icon">⭐</div>
             <h3>4.9 Average Rating</h3>
-            <p>Hundreds of five-star rides. Our drivers are professionals who treat every client like a VIP.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ CTA ═══ -->
-    <section class="section reveal">
-      <div class="container">
-        <div class="cta-strip">
-          <div>
-            <p class="cta-title">Ready to book a premium ride?</p>
-            <p class="cta-sub">Start your booking in under 60 seconds.</p>
-          </div>
-          <a class="btn btn-primary" href="Pages/book.html">Start Booking</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ DRIVER ROLLER — bottom only, small cards, 3 drivers once ═══ -->
-    <section class="roller-section reveal" id="drivers">
-      <div class="container">
-        <div class="section-head">
-          <h2>Our Drivers</h2>
-          <p class="lead">Professional chauffeurs you can trust.</p>
-        </div>
-      </div>
-      <div class="roller-track-wrap">
-        <div class="roller-track" id="rollerTrack">
-          <div class="driver-roller-card" data-driver="fredler">
-            <img src="assets/images/drivers/driver1.jpg" alt="Fredler Gracia Pierre-Louis">
-            <h4>Fredler G.</h4>
-            <p class="driver-exp">3 yrs Uber · 2 yrs Lyft</p>
-            <div class="driver-rating">★ 4.9</div>
-            <span class="avail-badge">Available</span>
-          </div>
-          <div class="driver-roller-card" data-driver="sebastien">
-            <img src="assets/images/drivers/driver2.jpg" alt="Sebastien Jouthe">
-            <h4>Sebastien J.</h4>
-            <p class="driver-exp">2 yrs Uber · 1 yr Lyft</p>
-            <div class="driver-rating">★ 4.8</div>
-            <span class="avail-badge">Available</span>
-          </div>
-          <div class="driver-roller-card" data-driver="nason">
-            <img src="assets/images/drivers/driver3.jpg" alt="Nason Valcin">
-            <h4>Nason V.</h4>
-            <p class="driver-exp">4 yrs Uber · 2 yrs Lyft</p>
-            <div class="driver-rating">★ 4.9</div>
-            <span class="avail-badge">Available</span>
+            <p>Hundreds of five-star rides. Every client treated like a VIP.</p>
           </div>
         </div>
       </div>
@@ -250,9 +374,67 @@
 
   <div class="toast-container" id="toastContainer"></div>
 
+  <!-- ═══ DRIVER PROFILE MODAL ═══ -->
+  <div class="dp-modal-backdrop" id="driverModal">
+    <div class="dp-modal" role="dialog" aria-modal="true">
+      <button class="dp-modal-close" id="dpModalClose" aria-label="Close profile">&times;</button>
+      <div class="dp-modal-hero">
+        <img class="dp-modal-photo" id="dpPhoto" src="" alt="">
+        <div class="dp-modal-hero-gradient"></div>
+        <div class="dp-modal-hero-content">
+          <span class="dp-modal-avail">Available</span>
+          <h2 class="dp-modal-name" id="dpName"></h2>
+          <p class="dp-modal-title" id="dpTitle"></p>
+        </div>
+      </div>
+      <div class="dp-modal-body">
+        <!-- Stats row -->
+        <div class="dp-stats-row">
+          <div class="dp-stat">
+            <span class="dp-stat-value" id="dpRating">5.0</span>
+            <span class="dp-stat-label">Rating</span>
+          </div>
+          <div class="dp-stat-divider"></div>
+          <div class="dp-stat">
+            <span class="dp-stat-value" id="dpRides">0</span>
+            <span class="dp-stat-label">Rides</span>
+          </div>
+          <div class="dp-stat-divider"></div>
+          <div class="dp-stat">
+            <span class="dp-stat-value" id="dpYears">0</span>
+            <span class="dp-stat-label">Years</span>
+          </div>
+        </div>
+
+        <!-- Background section -->
+        <div class="dp-section">
+          <h3 class="dp-section-title">Background</h3>
+          <p class="dp-text" id="dpBackground"></p>
+        </div>
+
+        <!-- Why I Drive -->
+        <div class="dp-section dp-why-section">
+          <h3 class="dp-section-title"><span class="dp-accent-dot"></span>Why I Drive</h3>
+          <p class="dp-quote" id="dpWhyDrive"></p>
+        </div>
+
+        <!-- All Reviews -->
+        <div class="dp-section">
+          <h3 class="dp-section-title">Client Reviews</h3>
+          <div class="dp-reviews" id="dpReviews"></div>
+        </div>
+
+        <!-- CTA -->
+        <a class="btn btn-primary btn-lg dp-modal-cta" href="Pages/book.html">
+          Book This Driver
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <script src="assets/js/app.js"></script>
-  <script src="assets/js/carousel.js"></script>
-  <script src="assets/js/roller.js"></script>
+  <script src="assets/js/homepage.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('Pages/sw.js').catch(() => {});

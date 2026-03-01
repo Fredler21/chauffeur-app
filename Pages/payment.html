@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Payment | [Your Brand Name]</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0B0B0D">
+  <title>Payment | Chauffeur App</title>
   <meta name="description" content="Confirm your trip and pay securely with Stripe.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +18,7 @@
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="container">
-      <a class="brand" href="../index.html"><span class="logo-dot"></span><span>[Your Brand Name]</span></a>
+      <a class="brand" href="../index.html"><span class="logo-dot"></span><span>Chauffeur App</span></a>
       <div class="nav-links" id="navLinks">
         <a href="../index.html">Home</a>
         <a href="dashboard.html">Dashboard</a>
@@ -64,19 +65,33 @@
 
             <div class="divider" style="margin:18px 0"></div>
 
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap">
-              <div>
-                <p class="muted">Estimated Total</p>
-                <p style="margin:4px 0 0;font-size:24px;font-weight:900" class="text-red" id="sumTotal">$ —</p>
-                <p class="muted" style="margin-top:6px;font-size:11px">Final total may change with stops or route updates.</p>
+            <!-- Fare Breakdown -->
+            <div class="fare-breakdown" style="border:none;padding:0;background:none;backdrop-filter:none">
+              <div class="fare-line">
+                <span class="fare-label">Trip Distance</span>
+                <span class="fare-value" id="sumMilesFare">—</span>
               </div>
-              <div style="text-align:right">
-                <p class="muted">Accepted</p>
-                <div style="display:flex;gap:8px;margin-top:6px">
-                  <span class="pill">Debit</span>
-                  <span class="pill">Credit</span>
-                  <span class="pill">Apple Pay</span>
-                </div>
+              <div class="fare-line">
+                <span class="fare-label">Ride Fare <small style="color:var(--muted)">($5/mi)</small></span>
+                <span class="fare-value" id="sumRideFare">—</span>
+              </div>
+              <div class="fare-line" id="sumPosLine" style="display:none">
+                <span class="fare-label">Vehicle Positioning Adjustment <small style="color:var(--muted)">($2/mi)</small></span>
+                <span class="fare-value" id="sumPosValue">—</span>
+              </div>
+              <div class="fare-line fare-total">
+                <span class="fare-label">Total Fare</span>
+                <span class="fare-value" id="sumTotal">$ —</span>
+              </div>
+              <div class="fare-radius-note" id="sumRadiusNote" style="display:none"></div>
+            </div>
+
+            <div style="text-align:right;margin-top:12px">
+              <p class="muted">Accepted</p>
+              <div style="display:flex;gap:8px;margin-top:6px;justify-content:flex-end">
+                <span class="pill">Debit</span>
+                <span class="pill">Credit</span>
+                <span class="pill">Apple Pay</span>
               </div>
             </div>
 
@@ -134,7 +149,7 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-bottom">
-        <span>&copy; <span id="footerYear">2026</span> [Your Brand Name]</span>
+        <span>&copy; <span id="footerYear">2026</span> Chauffeur App</span>
         <span>Licensed &amp; Insured</span>
       </div>
     </div>
